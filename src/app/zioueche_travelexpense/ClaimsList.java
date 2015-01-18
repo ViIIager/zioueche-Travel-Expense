@@ -19,6 +19,7 @@ public class ClaimsList{
 	}
 	
 	public void deleteClaim(Claim removeclaim){
+		assert(claimList.size() > 0);
 		claimList.remove(removeclaim);
 	}
 }

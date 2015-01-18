@@ -8,4 +8,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.zioueche_travelexpense.MainActivity" >
 
+       <Button
+        android:id="@+id/add_claim_button"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="78dp"
+        android:text="Add Claim" />
+
+       <Button
+           android:id="@+id/view_claims"
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:layout_alignParentBottom="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginBottom="31dp"
+           android:text="View Claims" />
+
+       <TextView
+           android:id="@+id/Title"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_alignLeft="@+id/add_claim_button"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="30dp"
+           android:text="CMPUT 301 Omar Zioueche"
+           android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
