@@ -7,7 +7,7 @@ import android.text.InputFilter.LengthFilter;
 import android.widget.Toast;
 
 public class ClaimsList{
-	protected ArrayList<Claim> claimList;
+	protected static ArrayList<Claim> claimList;
 	protected ArrayList<Listener> listeners;
 	
 	public ClaimsList(){
@@ -30,7 +30,7 @@ public class ClaimsList{
 		notifyListeners();
 	}
 	
-	public boolean isEmpty(){
+	public static boolean isEmpty(){
 		return claimList.size()== 0;
 	}
 	

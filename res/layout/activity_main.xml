@@ -12,6 +12,7 @@
            android:id="@+id/add_claim_button"
            android:layout_width="match_parent"
            android:layout_height="150dp"
+           android:layout_above="@+id/view_claims"
            android:layout_alignParentLeft="true"
            android:layout_alignParentRight="true"
            android:layout_alignParentTop="true"
@@ -25,8 +26,9 @@
            android:layout_height="150dp"
            android:layout_alignParentBottom="true"
            android:layout_centerHorizontal="true"
-           android:layout_marginBottom="31dp"
+           android:onClick="CheckList"
            android:text="View Claims" />
+       
 
        <TextView
            android:id="@+id/Title"
