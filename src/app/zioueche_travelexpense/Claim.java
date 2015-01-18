@@ -4,5 +4,16 @@ import java.sql.Date;
 
 public class Claim {
 	private String Name;
-	private Date date;
-	}	
+
+	public Claim(String Name){
+		this.Name = Name;
+	}
+	public String getName(){
+		return this.Name;
+	}
+	
+	public String toString(){
+		return getName();
+	}
+}
+	
