@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,10 +46,32 @@ public class AddClaim extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(AddClaim.this,list.get(position).toString()+" deleted", Toast.LENGTH_SHORT).show();
+				AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
+				adb.setMessage("Delete "+ list.get(position).toString()+"?");
+				adb.setCancelable(true);
+				final int finalPosition = position;
+				adb.setPositiveButton("Delete",new OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Claim claim = list.get(finalPosition);
+						ClaimListController.getClaimList().deleteClaim(claim);
+					}
+					
+				});
+				adb.setNegativeButton("Cancel",new OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {						
+					}
+					
+				});
+				adb.show();
+				return false;
+				/*Toast.makeText(AddClaim.this,list.get(position).toString()+" deleted", Toast.LENGTH_SHORT).show();
 				Claim claim = list.get(position);
 				ClaimListController.getClaimList().deleteClaim(claim);
-				return false;
+				return false;*/
 			}
 			
 		});
@@ -73,6 +99,7 @@ public class AddClaim extends Activity {
 		ClaimListController ct = new ClaimListController();
 		EditText textView = (EditText) findViewById(R.id.add_claim_field);
 		ct.addClaim(new Claim(textView.getText().toString()));
+		textView.setText("");
 		//Intent intent = new Intent(MainActivity.this, AddClaim.class);
 		//startActivity(intent);
 	}

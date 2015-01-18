@@ -27,15 +27,12 @@
 
     <EditText
         android:id="@+id/add_claim_field"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/add_claim_button"
         android:layout_alignBottom="@+id/add_claim_button"
-        android:layout_alignLeft="@+id/ListView1"
+        android:layout_alignLeft="@+id/claimListView"
         android:ems="10"
-        android:inputType="textPersonName" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
