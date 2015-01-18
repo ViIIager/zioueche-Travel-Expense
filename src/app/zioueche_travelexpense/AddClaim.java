@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,8 +37,19 @@ public class AddClaim extends Activity {
 			claimAdapter.notifyDataSetChanged();
 			}
 		});
+		
+		listView.setOnItemLongClickListener(new OnItemLongClickListener(){
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Toast.makeText(AddClaim.this,list.get(position).toString()+" deleted", Toast.LENGTH_SHORT).show();
+				Claim claim = list.get(position);
+				ClaimListController.getClaimList().deleteClaim(claim);
+				return false;
+			}
+			
+		});
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
