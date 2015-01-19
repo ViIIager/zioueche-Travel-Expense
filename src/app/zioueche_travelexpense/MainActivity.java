@@ -53,6 +53,6 @@ public class MainActivity extends Activity {
 		}
 		else{Toast.makeText(MainActivity.this,"not empty" , Toast.LENGTH_SHORT).show();
 		}
-		}
 	}
+}
 	
