@@ -17,6 +17,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 public class AddClaim extends Activity {
@@ -46,32 +47,39 @@ public class AddClaim extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
-				adb.setMessage("Delete "+ list.get(position).toString()+"?");
-				adb.setCancelable(true);
 				final int finalPosition = position;
-				adb.setPositiveButton("Delete",new OnClickListener(){
+				PopupMenu popup = new PopupMenu(AddClaim.this, view);
+				popup.getMenuInflater().inflate(R.menu.add_claim, popup.getMenu());
+				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
+		             public boolean onMenuItemClick(MenuItem item) {  
+		              if (item.getTitle().equals("Delete")){
+		            	AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
+		  				adb.setMessage("Delete "+ list.get(finalPosition).toString()+"?");
+		  				adb.setCancelable(true);
+		  				
+		  				adb.setPositiveButton("Delete",new OnClickListener(){
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Claim claim = list.get(finalPosition);
-						ClaimListController.getClaimList().deleteClaim(claim);
-					}
-					
-				});
-				adb.setNegativeButton("Cancel",new OnClickListener(){
+		  					@Override
+		  					public void onClick(DialogInterface dialog, int which) {
+		  						Claim claim = list.get(finalPosition);
+		  						ClaimListController.getClaimList().deleteClaim(claim);
+		  					}
+		  					
+		  				});
+		  				adb.setNegativeButton("Cancel",new OnClickListener(){
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {						
-					}
-					
-				});
-				adb.show();
-				return false;
-				/*Toast.makeText(AddClaim.this,list.get(position).toString()+" deleted", Toast.LENGTH_SHORT).show();
-				Claim claim = list.get(position);
-				ClaimListController.getClaimList().deleteClaim(claim);
-				return false;*/
+		  					@Override
+		  					public void onClick(DialogInterface dialog, int which) {						
+		  					}
+		  					
+		  				});
+		  				adb.show();
+		              }
+		              return true;  
+		             }  
+		            });  
+				popup.show();
+			return false;
 			}
 			
 		});
@@ -83,6 +91,29 @@ public class AddClaim extends Activity {
 		return true;
 	}
 
+	protected void onDeleteClick(final int position, final ArrayList<Claim> list){
+		AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
+		adb.setMessage("Delete "+ list.get(position).toString()+"?");
+		adb.setCancelable(true);
+		
+		adb.setPositiveButton("Delete",new OnClickListener(){
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Claim claim = list.get(position);
+				ClaimListController.getClaimList().deleteClaim(claim);
+			}
+			
+		});
+		adb.setNegativeButton("Cancel",new OnClickListener(){
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {						
+			}
+			
+		});
+		adb.show();
+	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
