@@ -121,6 +121,7 @@ public class AddClaim extends Activity {
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+			
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
@@ -130,6 +131,12 @@ public class AddClaim extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void addClaimView(MenuItem item){
+		Toast.makeText(this, "changing view", Toast.LENGTH_SHORT).show();
+		setContentView(R.layout.claim_add_page);
+	}
+	
 	public void addClaims(View v){
 		ClaimListController ct = new ClaimListController();
 		EditText textView = (EditText) findViewById(R.id.add_claim_field);

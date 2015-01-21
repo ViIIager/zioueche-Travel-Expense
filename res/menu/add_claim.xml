@@ -1,14 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="app.zioueche_travelexpense.AddClaim" >
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
-    <item android:id="@+id/AddExpense" android:title="Add Expense"></item>
+    <item android:id="@+id/addClaim" android:title="New Claim" android:onClick="addClaimView"></item><item android:id="@+id/AddExpense" android:title="Add Expense"></item>
     <item android:id="@+id/DeleteItem" android:title="Delete"></item>
     <item android:id="@+id/CancelAction" android:title="Cancel"></item>
+    
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"></item>
 
 </menu>
