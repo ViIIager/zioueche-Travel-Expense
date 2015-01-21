@@ -1,12 +1,19 @@
 package app.zioueche_travelexpense;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import android.text.InputFilter.LengthFilter;
 import android.widget.Toast;
 
-public class ClaimsList{
+public class ClaimsList implements Serializable{
+	
+	/**
+	 * Claim List Serialization ID
+	 */
+	private static final long serialVersionUID = 372301924739907840L;
+	
 	protected static ArrayList<Claim> claimList;
 	protected ArrayList<Listener> listeners;
 	
@@ -25,7 +32,6 @@ public class ClaimsList{
 	}
 	
 	public void deleteClaim(Claim removeclaim){
-		assert(claimList.size() > 0);
 		claimList.remove(removeclaim);
 		notifyListeners();
 	}

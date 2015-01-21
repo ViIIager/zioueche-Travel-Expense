@@ -51,20 +51,18 @@ public class AddClaim extends Activity {
 				PopupMenu popup = new PopupMenu(AddClaim.this, view);
 				popup.getMenuInflater().inflate(R.menu.add_claim, popup.getMenu());
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
-		             public boolean onMenuItemClick(MenuItem item) {  
+		            public boolean onMenuItemClick(MenuItem item) {  
+		            //DELETE button check.  
 		              if (item.getTitle().equals("Delete")){
 		            	AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
 		  				adb.setMessage("Delete "+ list.get(finalPosition).toString()+"?");
 		  				adb.setCancelable(true);
-		  				
 		  				adb.setPositiveButton("Delete",new OnClickListener(){
-
 		  					@Override
 		  					public void onClick(DialogInterface dialog, int which) {
 		  						Claim claim = list.get(finalPosition);
 		  						ClaimListController.getClaimList().deleteClaim(claim);
 		  					}
-		  					
 		  				});
 		  				adb.setNegativeButton("Cancel",new OnClickListener(){
 
@@ -74,7 +72,13 @@ public class AddClaim extends Activity {
 		  					
 		  				});
 		  				adb.show();
+		              }//end of delete button check
+		              //START of ADD EXPENSE check
+		              if (item.getTitle().equals("Add Expense")){
+		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
+		            	  
 		              }
+		              //end of add expense check
 		              return true;  
 		             }  
 		            });  
