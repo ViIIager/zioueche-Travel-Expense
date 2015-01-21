@@ -16,10 +16,16 @@ public class Claim implements Serializable{
 	private Date sdate;
 	private Date edate;
 	private String status;
-
+	/*add this to CONSTRUCTOR:  
+	 * Date sdate, Date edate, String status, ArrayList<Expense> expenseList*/
 	public Claim(String Name){
 		this.Name = Name;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.status = status;
+		this.expenseList = expenseList;
 	}
+	
 	public String getName(){
 		return this.Name;
 	}
@@ -30,7 +36,18 @@ public class Claim implements Serializable{
 	
 	public String getStatus(){
 		return status;
-		
+	}
+	
+	public Date getSDate(){
+		return sdate;
+	}
+	
+	public Date getEDate(){
+		return edate;
+	}
+
+	public void editStatus(String status){
+		this.status = status;
 	}
 	
 	public ArrayList<Expense> getExpenses(){

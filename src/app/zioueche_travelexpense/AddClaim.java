@@ -9,6 +9,7 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,7 +135,7 @@ public class AddClaim extends Activity {
 		EditText textView = (EditText) findViewById(R.id.add_claim_field);
 		String added = textView.getText().toString();
 		
-		if (added != ""){
+		if (!TextUtils.isEmpty(added)){
 			final String t = format("added",added);
 			ct.addClaim(new Claim(added));
 			Toast.makeText(this, t, Toast.LENGTH_SHORT).show();

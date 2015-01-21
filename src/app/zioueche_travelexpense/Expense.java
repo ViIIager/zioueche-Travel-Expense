@@ -15,6 +15,7 @@ public class Expense {
 		this.date = date;
 		this.price = price;
 	}
+	
 	public String getName(){
 		return this.expname;
 	}

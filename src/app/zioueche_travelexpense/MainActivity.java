@@ -8,8 +8,8 @@ package app.zioueche_travelexpense;
  * - returned/approved/accepted are statuses(check-boxes) that affect the class Claim's STATUS
  * - add date to claim
  * - figure out how to link claims and expenses.
- * -
- * -
+ * - Look at claim CLass to see what I need to add to the constructor
+ * - Add New XML file for adding a claim. this needs to work.
  * -
  * -
  * -
