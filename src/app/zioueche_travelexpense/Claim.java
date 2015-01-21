@@ -13,6 +13,9 @@ public class Claim implements Serializable{
 	private static final long serialVersionUID = 3325687864575767244L;
 	private String Name;
 	private ArrayList<Expense> expenseList;
+	private Date sdate;
+	private Date edate;
+	private String status;
 
 	public Claim(String Name){
 		this.Name = Name;
@@ -23,6 +26,11 @@ public class Claim implements Serializable{
 	
 	public String toString(){
 		return getName();
+	}
+	
+	public String getStatus(){
+		return status;
+		
 	}
 	
 	public ArrayList<Expense> getExpenses(){

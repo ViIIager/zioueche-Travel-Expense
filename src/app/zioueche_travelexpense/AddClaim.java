@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-
+//figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends Activity {
 
 	@Override
