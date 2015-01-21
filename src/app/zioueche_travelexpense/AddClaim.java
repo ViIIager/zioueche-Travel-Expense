@@ -130,12 +130,23 @@ public class AddClaim extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	public void addClaims(View v){
-		Toast.makeText(this, "adding claim!", Toast.LENGTH_SHORT).show();
 		ClaimListController ct = new ClaimListController();
 		EditText textView = (EditText) findViewById(R.id.add_claim_field);
-		ct.addClaim(new Claim(textView.getText().toString()));
-		textView.setText("");
-		//Intent intent = new Intent(MainActivity.this, AddClaim.class);
-		//startActivity(intent);
+		String added = textView.getText().toString();
+		
+		if (added != ""){
+			final String t = format("added",added);
+			ct.addClaim(new Claim(added));
+			Toast.makeText(this, t, Toast.LENGTH_SHORT).show();
+			textView.setText("");
+			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
+			//startActivity(intent);
+		}else{
+			Toast.makeText(AddClaim.this,"Please type something before adding", Toast.LENGTH_SHORT).show();
+		}
+	}
+	private String format(String string, String added) {
+		String formats = string +" "+ added; 
+		return formats;
 	}
 }
