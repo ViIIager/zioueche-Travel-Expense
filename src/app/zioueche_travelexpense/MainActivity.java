@@ -1,4 +1,20 @@
 package app.zioueche_travelexpense;
+/* TO-DO list:
+ * 
+ * - working on adding conditions for inputs, 
+ * - adding expenses to the claim
+ * - finish the expense add page
+ * - add another page for claims. not on same page as list
+ * - returned/approved/accepted are statuses(check-boxes) that affect the class Claim's STATUS
+ * - add date to claim
+ * - figure out how to link claims and expenses.
+ * -
+ * -
+ * -
+ * -
+ * -
+ * -
+ * -*/
 
 import android.app.Activity;
 import android.content.Intent;
