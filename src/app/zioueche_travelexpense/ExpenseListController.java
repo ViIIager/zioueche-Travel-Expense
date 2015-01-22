@@ -10,7 +10,7 @@ public class ExpenseListController {
 		return expenseList;
 	}
 	
-	public void addClaim(Expense expense){
+	public void addExpense(Expense expense){
 		getExpenseList().addExpense(expense);
 	}
 }

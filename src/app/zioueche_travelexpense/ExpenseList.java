@@ -40,4 +40,8 @@ public class ExpenseList {
 		listeners.remove(l);
 		
 	}
+
+	public Collection<Expense> getExpense() {
+		return expenseList;
+	}
 }

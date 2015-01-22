@@ -20,10 +20,12 @@ public class Claim implements Serializable{
 	 * Date sdate, Date edate, String status, ArrayList<Expense> expenseList*/
 	public Claim(String Name){
 		this.Name = Name;
-		this.sdate = sdate;
-		this.edate = edate;
-		this.status = status;
-		this.expenseList = expenseList;
+		ArrayList<Expense> expenseList = new ArrayList<Expense>();
+		
+		//this.sdate = sdate;
+		//this.edate = edate;
+		//this.status = status;
+		//this.expenseList = expenseList;
 	}
 	
 	public String getName(){

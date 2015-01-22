@@ -1,15 +1,14 @@
 package app.zioueche_travelexpense;
 /* TO-DO list:
  * 
- * - working on adding conditions for inputs,DONE I THINK FOR CLAIMS 
+ * -
  * - adding expenses to the claim WORK ON THIS NEXT> THIS IS CRUCIAL
  * - finish the expense add page THIS GOES WITH 2
- * - add another page for claims. not on same page as list AFTER THE EXPENSES ARE ADDED
  * - returned/approved/accepted are statuses(check-boxes) that affect the class Claim's STATUS AFTER CLAIM IS EDITED
  * - add date to claim AFTER ALL ABOVE
  * - figure out how to link claims and expenses. MAIN PART OF CRUCIAL
  * - Look at claim CLass to see what I need to add to the constructor MAYBE AT END?  EDIT from later?  easier than doing everything else.
- * - Add New XML file for adding a claim. this needs to work.  FIGURE THIS OUT LAST> ONLY IF POSSIBLE
+ * - 
  * -
  * -
  * -
@@ -60,7 +59,7 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, AddClaim.class);
 		startActivity(intent);
 	}
-	
+		
 	public void CheckList(View v){
 		//int size = ClaimsList.claimList.size();
 		//String Added = String.format("there are %d claims in this list", size);

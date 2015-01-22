@@ -14,12 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends Activity {
 
@@ -27,11 +29,19 @@ public class AddClaim extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
+		//adapter for claim view
 		ListView listView = (ListView) findViewById(R.id.claimListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
+		
+		//adapter for expense view
+		ListView listViewExp = (ListView) findViewById(R.id.ExpenseListView);
+		Collection<Expense> expenses = ExpenseListController.getExpenseList().getExpense();
+		final ArrayList<Expense> elist = new ArrayList<Expense>(expenses);
+		final ArrayAdapter<Expense> expAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, elist);
+		listViewExp.setAdapter(expAdapter);
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -44,6 +54,31 @@ public class AddClaim extends Activity {
 			}
 		});
 		
+		//Add observer pattern
+	//	ExpenseListController.getExpenseList().addListener(new Listener(){
+	//		@Override
+	//		public void update(){
+	//			elist.clear();
+	//			Collection<Expense> expenses = ExpenseListController.getExpenseList().getClaim();
+	//			elist.addAll(expenses);
+	//			expAdapter.notifyDataSetChanged();
+	//		}
+	//	});
+		//SINGLE TAP FUNCTION
+		listViewExp.setOnItemClickListener(new OnItemClickListener(){
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				setContentView(R.layout.add_expense);
+				}
+		});
+							
+		/*final int finalpos = position;
+				ClaimsList.claimList.get(finalpos).getExpenses();
+			}
+			
+		});*/
+		
+		//LONG CLICK FUNCTIONS
 		listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
@@ -77,6 +112,9 @@ public class AddClaim extends Activity {
 		              //START of ADD EXPENSE check
 		              if (item.getTitle().equals("Add Expense")){
 		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
+		            	  ExpenseListController et = new ExpenseListController();
+		            	  String added = "test";
+		            	  et.addExpense(new Expense(added));
 		            	  
 		              }
 		              //end of add expense check
@@ -88,6 +126,7 @@ public class AddClaim extends Activity {
 			}
 			
 		});
+		
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,7 +172,7 @@ public class AddClaim extends Activity {
 	}
 	
 	public void addClaimView(MenuItem item){
-		Toast.makeText(this, "changing view", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "going to claim creation page", Toast.LENGTH_SHORT).show();
 		setContentView(R.layout.claim_add_page);
 	}
 	

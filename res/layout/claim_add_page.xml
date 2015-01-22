@@ -6,32 +6,12 @@
     <Button
         android:id="@+id/add_claim_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:onClick="AddClaim.addClaims"
-        android:text="Add" />
-
-    <EditText
-        android:id="@+id/add_claim_field"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="18dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/add_claim_field"
-        android:layout_alignBottom="@+id/add_claim_field"
-        android:layout_toLeftOf="@+id/add_claim_field"
-        android:text="Enter Claim Name"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:onClick="addClaims"
+        android:text="Create Claim" />
 
     <TextView
         android:id="@+id/TextView2"
@@ -53,28 +33,43 @@
         android:text="Enter End  Date"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/add_claim_field"
+        android:layout_alignParentLeft="true"
+        android:text="Enter Claim Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/add_claim_field"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TextView2"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="date" />
+
     <EditText
         android:id="@+id/EditText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/TextView3"
         android:layout_alignBottom="@+id/TextView3"
-        android:layout_alignLeft="@+id/editText1"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="date" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/TextView2"
-        android:layout_alignBottom="@+id/TextView2"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="date" >
-
-        <requestFocus />
-    </EditText>
 
 </RelativeLayout>
