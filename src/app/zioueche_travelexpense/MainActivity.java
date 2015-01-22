@@ -8,11 +8,6 @@ package app.zioueche_travelexpense;
  * - add date to claim AFTER ALL ABOVE
  * - figure out how to link claims and expenses. MAIN PART OF CRUCIAL
  * - Look at claim CLass to see what I need to add to the constructor MAYBE AT END?  EDIT from later?  easier than doing everything else.
- * - 
- * -
- * -
- * -
- * -
  * -*/
 
 import android.app.Activity;
