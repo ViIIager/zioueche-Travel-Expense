@@ -26,6 +26,9 @@
             android:name=".AddClaim"
             android:label="@string/title_activity_add_claim" >
         </activity>
+         <activity
+            android:name=".ExpenseAdd">
+         </activity>
     </application>
 
 </manifest>
