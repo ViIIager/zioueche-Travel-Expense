@@ -1,9 +1,14 @@
 package app.zioueche_travelexpense;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import android.text.InputFilter.LengthFilter;
+import android.widget.Toast;
+
 public class ExpenseList {
+	
 	protected static ArrayList<Expense> expenseList;
 	protected ArrayList<Listener> listeners;
 	
@@ -12,7 +17,7 @@ public class ExpenseList {
 		listeners = new ArrayList<Listener>();
 	}
 	
-	public Collection<Expense> getClaim(){
+	public Collection<Expense> getExpense(){
 		return expenseList;
 	}
 	
@@ -21,10 +26,13 @@ public class ExpenseList {
 		notifyListeners();
 	}
 	
-	public void deleteExpense(Expense expense){
-		assert(expenseList.size() > 0);
-		expenseList.remove(expense);
+	public void deleteExpense(Expense removeexp){
+		expenseList.remove(removeexp);
 		notifyListeners();
+	}
+	
+	public static boolean isEmpty(){
+		return expenseList.size()== 0;
 	}
 	
 	public void notifyListeners(){
@@ -40,8 +48,6 @@ public class ExpenseList {
 		listeners.remove(l);
 		
 	}
-
-	public Collection<Expense> getExpense() {
-		return expenseList;
-	}
+	
 }
+

@@ -30,6 +30,7 @@ public class AddClaim extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
 		//adapter for claim view
+		
 		ListView listView = (ListView) findViewById(R.id.claimListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
@@ -37,11 +38,12 @@ public class AddClaim extends Activity {
 		listView.setAdapter(claimAdapter);
 		
 		//adapter for expense view
-		ListView listViewExp = (ListView) findViewById(R.id.ExpenseListView);
-		Collection<Expense> expenses = ExpenseListController.getExpenseList().getExpense();
+		/*ListView listViewExp = (ListView) findViewById(R.id.ExpenseListView);
+		
+		Collection<Expense> expenses = (Collection<Expense>) ExpenseListController.getExpenseList();
 		final ArrayList<Expense> elist = new ArrayList<Expense>(expenses);
 		final ArrayAdapter<Expense> expAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, elist);
-		listViewExp.setAdapter(expAdapter);
+		listViewExp.setAdapter(expAdapter);*/
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -65,14 +67,14 @@ public class AddClaim extends Activity {
 	//		}
 	//	});
 		//SINGLE TAP FUNCTION
-		listViewExp.setOnItemClickListener(new OnItemClickListener(){
+		/*listViewExp.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				setContentView(R.layout.add_expense);
 				}
 		});
 							
-		/*final int finalpos = position;
+		final int finalpos = position;
 				ClaimsList.claimList.get(finalpos).getExpenses();
 			}
 			
@@ -111,10 +113,14 @@ public class AddClaim extends Activity {
 		              }//end of delete button check
 		              //START of ADD EXPENSE check
 		              if (item.getTitle().equals("Add Expense")){
+		            	  ExpenseListController ec = new ExpenseListController();
 		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
-		            	  ExpenseListController et = new ExpenseListController();
+		            	  //list.get(finalPosition).addExpense(new Expense(added));
+		            	  int test  = list.get(finalPosition).getExpenses().size();
 		            	  String added = "test";
-		            	  et.addExpense(new Expense(added));
+		            	  list.get(finalPosition).addExpense(new Expense(added));
+		            	  //test.add(new Expense(added ));
+		            	  Toast.makeText(AddClaim.this, "adding"+" "+added+" "+test, Toast.LENGTH_SHORT).show();
 		            	  
 		              }
 		              //end of add expense check

@@ -16,11 +16,13 @@ public class Claim implements Serializable{
 	private Date sdate;
 	private Date edate;
 	private String status;
+	
 	/*add this to CONSTRUCTOR:  
 	 * Date sdate, Date edate, String status, ArrayList<Expense> expenseList*/
+	
 	public Claim(String Name){
 		this.Name = Name;
-		ArrayList<Expense> expenseList = new ArrayList<Expense>();
+		expenseList = new ArrayList<Expense>();
 		
 		//this.sdate = sdate;
 		//this.edate = edate;
@@ -30,6 +32,14 @@ public class Claim implements Serializable{
 	
 	public String getName(){
 		return this.Name;
+	}
+	/*
+	public ArrayList<Expense> getExpenses(){
+		return expenseList;
+	}
+	*/
+	public void addExpense(Expense expense){
+		expenseList.add(expense);
 	}
 	
 	public String toString(){
@@ -52,14 +62,7 @@ public class Claim implements Serializable{
 		this.status = status;
 	}
 	
-	public ArrayList<Expense> getExpenses(){
-		return expenseList;
-	}
-	
-	public void addExpense(Expense expense){
-		expenseList.add(expense);
-		//Toast.makeText(Claim.this, "added a test", Toast.LENGTH_SHORT).show();
-	}
+
 	
 	public boolean equal(Object compareClaim){
 		if (compareClaim != null && compareClaim.getClass()==this.getClass()){
@@ -71,6 +74,11 @@ public class Claim implements Serializable{
 	
 	public int hashCode(){
 		return ("Claim"+getName()).hashCode();
+	}
+
+	public ArrayList<Expense> getExpenses() {
+		// TODO Auto-generated method stub
+		return expenseList;
 	}
 }
 	
