@@ -1,52 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/expense_add_button"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="addExpense"
-        android:text="Add Expense" />
-
-    <EditText
-        android:id="@+id/exp_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-
-        <requestFocus />
-    </EditText>
+        android:layout_x="2dp"
+        android:layout_y="182dp"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
-        android:layout_alignBottom="@+id/editText1"
-        android:layout_alignParentLeft="true"
-        android:text="Expense"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_x="2dp"
+        android:layout_y="98dp"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText1"
+        android:layout_x="3dp"
+        android:layout_y="262dp"
         android:text="Price"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/price "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
+        android:layout_x="108dp"
+        android:layout_y="257dp"
+        android:ems="10"
         android:inputType="number" />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/date_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="109dp"
+        android:layout_y="172dp"
+        android:ems="10"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/expense_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_x="0dp"
+        android:layout_y="382dp"
+        android:onClick="addExpense"
+        android:text="Add Expense" />
+
+    <EditText
+        android:id="@+id/name_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="107dp"
+        android:layout_y="88dp"
+        android:ems="10" />
+
+    <Spinner
+        android:id="@+id/currspin"
+        android:layout_width="295dp"
+        android:layout_height="50dp"
+        android:layout_x="12dp"
+        android:layout_y="320dp" />
+
+</AbsoluteLayout>
