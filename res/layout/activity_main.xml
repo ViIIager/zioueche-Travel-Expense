@@ -28,6 +28,6 @@
            android:layout_centerHorizontal="true"
            android:layout_marginTop="22dp"
            android:onClick="goToAdd"
-           android:text="Add Claim" />
+           android:text="View Claims" />
 
 </RelativeLayout>

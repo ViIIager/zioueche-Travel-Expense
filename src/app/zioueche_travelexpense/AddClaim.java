@@ -1,7 +1,10 @@
 package app.zioueche_travelexpense;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,6 +14,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -25,11 +30,14 @@ import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends Activity {
-
+	String name;
+	String sdate;
+	String edate;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
+
 		//adapter for claim view
 		
 		ListView listView = (ListView) findViewById(R.id.claimListView);
@@ -37,8 +45,6 @@ public class AddClaim extends Activity {
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
-		
-
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -50,7 +56,6 @@ public class AddClaim extends Activity {
 			claimAdapter.notifyDataSetChanged();
 			}
 		});
-		
 
 		//Add observer pattern
 	//	ExpenseListController.getExpenseList().addListener(new Listener(){
@@ -67,6 +72,7 @@ public class AddClaim extends Activity {
 		//SINGLE TAP FUNCTION maybe make this into an activity 
 		//for more functionality to be able to add expenses from the list view
 		listView.setOnItemClickListener(new OnItemClickListener(){
+			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Toast.makeText(AddClaim.this, "Clicked "+list.get(position), Toast.LENGTH_SHORT).show();
@@ -77,8 +83,6 @@ public class AddClaim extends Activity {
 				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
 				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
 				expView.setAdapter(expAdap);
-
-							
 				}
 
 		});
@@ -181,23 +185,68 @@ public class AddClaim extends Activity {
 	}
 	
 	public void addClaims(View v){
-		ClaimListController ct = new ClaimListController();
-		EditText textView = (EditText) findViewById(R.id.add_claim_field);
-		String added = textView.getText().toString();
-		
-		if (!TextUtils.isEmpty(added)){
-			final String t = format("added",added);
-			ct.addClaim(new Claim(added));
-			Toast.makeText(this, t, Toast.LENGTH_SHORT).show();
-			textView.setText("");
-			setContentView(R.layout.claim_list);
+		ClaimListController ct = new ClaimListController();	
+		ct.addClaim(new Claim(name, sdate, edate));
+		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
+		setContentView(R.layout.activity_main);
 			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
 			//startActivity(intent);
+		
+	}
+	
+	public void getClaimName(View v){
+		EditText textView = (EditText) findViewById(R.id.add_claim_field);
+		String added = textView.getText().toString();
+		if (!TextUtils.isEmpty(added)){
+			//1. Gets name of Claim
+			this.name = added;
+			textView.setText("");
+			setContentView(R.layout.claim_add_sdate);
 		}else{
-			Toast.makeText(AddClaim.this,"Please type something before adding", Toast.LENGTH_SHORT).show();
+			Toast.makeText(AddClaim.this,"Please enter a Name before continuing", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
+	public void getSDate(View v){
+		DatePicker sdatePicker = (DatePicker)findViewById(R.id.sdate_picker);
+		Integer year = sdatePicker.getYear();
+        Integer month = sdatePicker.getMonth();
+        Integer day = sdatePicker.getDayOfMonth();
+        StringBuilder sb=new StringBuilder();
+        sb.append(year.toString()).append("-").append(month.toString()).append("-").append(day.toString()).append(" 00:00:00");
+        String sdate=sb.toString();
+		
+		if (!TextUtils.isEmpty(sdate)){
+	        this.sdate = sdate;
+	        setContentView(R.layout.claim_add_edate);
+		}else{
+			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
+		}
+        setContentView(R.layout.claim_add_edate);
+	}
+	
+	public void getEDate(View v){
+		DatePicker edatePicker = (DatePicker)findViewById(R.id.edate_picker);
+        Integer year = edatePicker.getYear();
+        Integer month = edatePicker.getMonth();
+        Integer day = edatePicker.getDayOfMonth();
+        StringBuilder sb=new StringBuilder();
+        sb.append(year.toString()).append("-").append(month.toString()).append("-").append(day.toString()).append(" 00:00:00");
+        String edate=sb.toString();
+		if (!TextUtils.isEmpty(edate)){
+			
+	        this.edate = edate;
+	        addClaims(v);
+	        setContentView(R.layout.activity_main);
+	        
+	        setContentView(R.layout.claim_add_edate);
+		}else{
+			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
+		}	}
+	
+	
+	
+	//just a format string maker.
 	private String format(String string, String added) {
 		String formats = string +" "+ added; 
 		return formats;
