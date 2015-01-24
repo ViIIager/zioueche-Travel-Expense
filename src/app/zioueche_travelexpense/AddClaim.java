@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -114,24 +115,12 @@ public class AddClaim extends Activity {
 		  				adb.show();
 		              }//end of delete button check
 		              //START of ADD EXPENSE check
-<<<<<<< HEAD
 		              if (item.getTitle().equals("Add Expense")){
-		            	  ExpenseListController ec = new ExpenseListController();
-		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
-		            	  //list.get(finalPosition).addExpense(new Expense(added));
-		            	  int test  = list.get(finalPosition).getExpenses().size();
-		            	  String added = "test";
-		            	  list.get(finalPosition).addExpense(new Expense(added));
-		            	  //test.add(new Expense(added ));
-		            	  Toast.makeText(AddClaim.this, "adding"+" "+added+" "+test, Toast.LENGTH_SHORT).show();
-		            	  
-=======
-		              if (item.getTitle().equals("Add Expense")){	            	  
 		            	  Intent intent = new Intent(AddClaim.this, ExpenseAdd.class);
-		            	  intent.putExtra("somename", finalPosition); 
+		            	  intent.putExtra("somename", finalPosition);
 		            	  startActivity(intent);
->>>>>>> 6787967ba5260b0a030109be27ee64b7f5eb2492
-		              }
+		            	  
+		 		              }
 		              //end of add expense check
 		              return true;  
 		             }  
