@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -38,6 +37,14 @@ public class AddClaim extends Activity {
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
 		
+		//adapter for expense view
+		/*ListView listViewExp = (ListView) findViewById(R.id.ExpenseListView);
+		
+		Collection<Expense> expenses = (Collection<Expense>) ExpenseListController.getExpenseList();
+		final ArrayList<Expense> elist = new ArrayList<Expense>(expenses);
+		final ArrayAdapter<Expense> expAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, elist);
+		listViewExp.setAdapter(expAdapter);*/
+		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
 			@Override
@@ -49,7 +56,16 @@ public class AddClaim extends Activity {
 			}
 		});
 		
-
+		//Add observer pattern
+	//	ExpenseListController.getExpenseList().addListener(new Listener(){
+	//		@Override
+	//		public void update(){
+	//			elist.clear();
+	//			Collection<Expense> expenses = ExpenseListController.getExpenseList().getClaim();
+	//			elist.addAll(expenses);
+	//			expAdapter.notifyDataSetChanged();
+	//		}
+	//	});
 		//SINGLE TAP FUNCTION
 		/*listViewExp.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -97,9 +113,14 @@ public class AddClaim extends Activity {
 		              }//end of delete button check
 		              //START of ADD EXPENSE check
 		              if (item.getTitle().equals("Add Expense")){
-		            	  Intent i = new Intent(getApplicationContext(), ExpenseAdd.class);
-		            	  i.putExtra("position",finalPosition);
-		            	  startActivity(i);
+		            	  ExpenseListController ec = new ExpenseListController();
+		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
+		            	  //list.get(finalPosition).addExpense(new Expense(added));
+		            	  int test  = list.get(finalPosition).getExpenses().size();
+		            	  String added = "test";
+		            	  list.get(finalPosition).addExpense(new Expense(added));
+		            	  //test.add(new Expense(added ));
+		            	  Toast.makeText(AddClaim.this, "adding"+" "+added+" "+test, Toast.LENGTH_SHORT).show();
 		            	  
 		              }
 		              //end of add expense check
