@@ -37,13 +37,7 @@ public class AddClaim extends Activity {
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
 		
-		//adapter for expense view
-		/*ListView listViewExp = (ListView) findViewById(R.id.ExpenseListView);
-		
-		Collection<Expense> expenses = (Collection<Expense>) ExpenseListController.getExpenseList();
-		final ArrayList<Expense> elist = new ArrayList<Expense>(expenses);
-		final ArrayAdapter<Expense> expAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, elist);
-		listViewExp.setAdapter(expAdapter);*/
+
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -56,6 +50,7 @@ public class AddClaim extends Activity {
 			}
 		});
 		
+
 		//Add observer pattern
 	//	ExpenseListController.getExpenseList().addListener(new Listener(){
 	//		@Override
@@ -68,18 +63,28 @@ public class AddClaim extends Activity {
 	//	});
 		//SINGLE TAP FUNCTION
 		/*listViewExp.setOnItemClickListener(new OnItemClickListener(){
+=======
+
+		//SINGLE TAP FUNCTION maybe make this into an activity 
+		//for more functionality to be able to add expenses from the list view
+		listView.setOnItemClickListener(new OnItemClickListener(){
+>>>>>>> 6787967ba5260b0a030109be27ee64b7f5eb2492
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				Toast.makeText(AddClaim.this, "Clicked "+list.get(position), Toast.LENGTH_SHORT).show();
+				//adapter expenses
 				setContentView(R.layout.add_expense);
-				}
-		});
+				ListView expView = (ListView) findViewById(R.id.ExpenseListView);
+				Collection<Expense> expenses = list.get(position).getExpenses();
+				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
+				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
+				expView.setAdapter(expAdap);
+
 							
-		final int finalpos = position;
-				ClaimsList.claimList.get(finalpos).getExpenses();
-			}
-			
-		});*/
-		
+				}
+
+		});
+		*/
 		//LONG CLICK FUNCTIONS
 		listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 			@Override
@@ -112,6 +117,7 @@ public class AddClaim extends Activity {
 		  				adb.show();
 		              }//end of delete button check
 		              //START of ADD EXPENSE check
+<<<<<<< HEAD
 		              if (item.getTitle().equals("Add Expense")){
 		            	  ExpenseListController ec = new ExpenseListController();
 		            	  Toast.makeText(AddClaim.this,"added expense",Toast.LENGTH_SHORT).show();
@@ -122,6 +128,12 @@ public class AddClaim extends Activity {
 		            	  //test.add(new Expense(added ));
 		            	  Toast.makeText(AddClaim.this, "adding"+" "+added+" "+test, Toast.LENGTH_SHORT).show();
 		            	  
+=======
+		              if (item.getTitle().equals("Add Expense")){	            	  
+		            	  Intent intent = new Intent(AddClaim.this, ExpenseAdd.class);
+		            	  intent.putExtra("somename", finalPosition); 
+		            	  startActivity(intent);
+>>>>>>> 6787967ba5260b0a030109be27ee64b7f5eb2492
 		              }
 		              //end of add expense check
 		              return true;  
@@ -192,12 +204,14 @@ public class AddClaim extends Activity {
 			ct.addClaim(new Claim(added));
 			Toast.makeText(this, t, Toast.LENGTH_SHORT).show();
 			textView.setText("");
+			setContentView(R.layout.claim_list);
 			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
 			//startActivity(intent);
 		}else{
 			Toast.makeText(AddClaim.this,"Please type something before adding", Toast.LENGTH_SHORT).show();
 		}
 	}
+	
 	private String format(String string, String added) {
 		String formats = string +" "+ added; 
 		return formats;
