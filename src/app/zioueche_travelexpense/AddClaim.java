@@ -62,13 +62,10 @@ public class AddClaim extends Activity {
 	//		}
 	//	});
 		//SINGLE TAP FUNCTION
-		/*listViewExp.setOnItemClickListener(new OnItemClickListener(){
-=======
-
+		
 		//SINGLE TAP FUNCTION maybe make this into an activity 
 		//for more functionality to be able to add expenses from the list view
 		listView.setOnItemClickListener(new OnItemClickListener(){
->>>>>>> 6787967ba5260b0a030109be27ee64b7f5eb2492
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Toast.makeText(AddClaim.this, "Clicked "+list.get(position), Toast.LENGTH_SHORT).show();
@@ -84,7 +81,7 @@ public class AddClaim extends Activity {
 				}
 
 		});
-		*/
+		
 		//LONG CLICK FUNCTIONS
 		listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 			@Override
