@@ -1,10 +1,22 @@
 package app.zioueche_travelexpense;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -30,9 +42,12 @@ import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends Activity {
+	private static final String SAVEFILE = "file.sav";
 	String name;
-	String sdate;
-	String edate;
+	Date sdate;
+	Date edate;
+	ArrayList<Claim> claim = (ArrayList<Claim>) ClaimListController.getClaimList().getClaim();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +58,9 @@ public class AddClaim extends Activity {
 		ListView listView = (ListView) findViewById(R.id.claimListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
+		if (list.size() > 1){
+			Collections.sort(list, new CustomComparatorClaim());
+		}
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
 		
@@ -56,21 +74,7 @@ public class AddClaim extends Activity {
 			claimAdapter.notifyDataSetChanged();
 			}
 		});
-
-		//Add observer pattern
-	//	ExpenseListController.getExpenseList().addListener(new Listener(){
-	//		@Override
-	//		public void update(){
-	//			elist.clear();
-	//			Collection<Expense> expenses = ExpenseListController.getExpenseList().getClaim();
-	//			elist.addAll(expenses);
-	//			expAdapter.notifyDataSetChanged();
-	//		}
-	//	});
-		//SINGLE TAP FUNCTION
 		
-		//SINGLE TAP FUNCTION maybe make this into an activity 
-		//for more functionality to be able to add expenses from the list view
 		listView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -83,6 +87,7 @@ public class AddClaim extends Activity {
 				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
 				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
 				expView.setAdapter(expAdap);
+				Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show();
 				}
 
 		});
@@ -130,12 +135,13 @@ public class AddClaim extends Activity {
 		             }  
 		            });  
 				popup.show();
-			return false;
+			return true;
 			}
 			
 		});
 		
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -186,8 +192,10 @@ public class AddClaim extends Activity {
 	
 	public void addClaims(View v){
 		ClaimListController ct = new ClaimListController();	
-		ct.addClaim(new Claim(name, sdate, edate));
+		Claim addClaim = new Claim(name, sdate, edate);
+		ct.addClaim(addClaim);
 		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
+		//saveInFile(addClaim);
 		setContentView(R.layout.activity_main);
 			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
 			//startActivity(intent);
@@ -209,15 +217,9 @@ public class AddClaim extends Activity {
 	
 	public void getSDate(View v){
 		DatePicker sdatePicker = (DatePicker)findViewById(R.id.sdate_picker);
-		Integer year = sdatePicker.getYear();
-        Integer month = sdatePicker.getMonth();
-        Integer day = sdatePicker.getDayOfMonth();
-        StringBuilder sb=new StringBuilder();
-        sb.append(year.toString()).append("-").append(month.toString()).append("-").append(day.toString()).append(" 00:00:00");
-        String sdate=sb.toString();
-		
-		if (!TextUtils.isEmpty(sdate)){
-	        this.sdate = sdate;
+		String Sdate = "not_empty";
+		if (!TextUtils.isEmpty(Sdate)){
+	        this.sdate = this.edate = getDateFromDatePicket(sdatePicker);;
 	        setContentView(R.layout.claim_add_edate);
 		}else{
 			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
@@ -227,28 +229,81 @@ public class AddClaim extends Activity {
 	
 	public void getEDate(View v){
 		DatePicker edatePicker = (DatePicker)findViewById(R.id.edate_picker);
-        Integer year = edatePicker.getYear();
-        Integer month = edatePicker.getMonth();
-        Integer day = edatePicker.getDayOfMonth();
-        StringBuilder sb=new StringBuilder();
-        sb.append(year.toString()).append("-").append(month.toString()).append("-").append(day.toString()).append(" 00:00:00");
-        String edate=sb.toString();
-		if (!TextUtils.isEmpty(edate)){
-			
-	        this.edate = edate;
+		String Edate = "not_empty";
+		if (!TextUtils.isEmpty(Edate)){
+	        this.edate = getDateFromDatePicket(edatePicker);
 	        addClaims(v);
-	        setContentView(R.layout.activity_main);
-	        
-	        setContentView(R.layout.claim_add_edate);
+	        this.finish();
 		}else{
 			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
-		}	}
+		}
+	}
 	
-	
-	
+
 	//just a format string maker.
 	private String format(String string, String added) {
 		String formats = string +" "+ added; 
 		return formats;
 	}
+	
+	//Get Date from DatePicker as a date;
+	public static java.util.Date getDateFromDatePicket(DatePicker datePicker){
+	    int day = datePicker.getDayOfMonth();
+	    int month = datePicker.getMonth();
+	    int year =  datePicker.getYear();
+
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(year, month, day);
+	    return calendar.getTime();
+	}
+	
+	
+	
+	
+	
+	//THIS IS THE PERSISTANCE AS DONE IN THE LAB> NOT SURE WHY IT IS NOT WORKING> I WILL LOOK AT IT LATER> 
+	
+	/*//Create persistent data file for arrays of expenses and lists
+	private void saveInFile(Claim claim) {
+		Gson gson = new Gson();
+		try {
+			FileOutputStream fos = openFileOutput(SAVEFILE,
+					0);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			gson.toJson(claim, osw);
+			osw.flush();
+			fos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//recover those persistent data created in the save function
+	private ArrayList<Claim> loadFromFile() {
+		Gson gson = new Gson();
+		ArrayList<Claim> claim = new ArrayList<Claim>();
+		try {
+			FileInputStream fis = openFileInput(SAVEFILE);
+			//Based on http://google.gson.googlecode.com/svn/trunk/gson/dos/javadoc/com/google/gson/Gson.html
+			Type listType = new TypeToken<ArrayList<String>>(){}.getType();
+			InputStreamReader isr = new InputStreamReader(fis);
+			claim = gson.fromJson(isr, listType);
+			fis.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (claim == null){
+			claim = new ArrayList<Claim>();
+		}
+		return claim;
+	}*/
 }

@@ -26,29 +26,36 @@ public final class R {
     }
     public static final class id {
         public static final int AbsoluteLayout1=0x7f08000b;
-        public static final int AddExpense=0x7f080013;
-        public static final int CancelAction=0x7f080015;
-        public static final int DeleteItem=0x7f080014;
+        public static final int AddExpense=0x7f08001a;
+        public static final int CancelAction=0x7f08001c;
+        public static final int DeleteItem=0x7f08001b;
         public static final int ExpenseListView=0x7f080004;
         public static final int RelativeLayout1=0x7f080003;
         public static final int Title=0x7f080000;
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f08001d;
         public static final int addClaim=0x7f080005;
         public static final int add_claim_button=0x7f080001;
         public static final int add_claim_field=0x7f080008;
+        public static final int aud=0x7f080017;
+        public static final int button1=0x7f08000e;
         public static final int claimListView=0x7f080002;
-        public static final int currspin=0x7f080012;
-        public static final int date_field=0x7f08000f;
+        public static final int create_claim_button=0x7f080013;
+        public static final int datePicker1=0x7f08000f;
         public static final int edate_picker=0x7f080006;
-        public static final int editClaimItem=0x7f080017;
-        public static final int expense_add_button=0x7f080010;
+        public static final int editClaimItem=0x7f08001e;
+        public static final int editText1=0x7f080011;
+        public static final int eur=0x7f080018;
+        public static final int exp_picker=0x7f080010;
+        public static final int expense_add_button=0x7f08000c;
+        public static final int gbp=0x7f080019;
         public static final int get_edate=0x7f080009;
-        public static final int name_field=0x7f080011;
-        public static final int price =0x7f08000e;
+        public static final int name_field=0x7f08000d;
+        public static final int price_field=0x7f080012;
+        public static final int radio0=0x7f080015;
+        public static final int radioGroup1=0x7f080014;
         public static final int sdate_picker=0x7f08000a;
         public static final int textView1=0x7f080007;
-        public static final int textView2=0x7f08000d;
-        public static final int textView3=0x7f08000c;
+        public static final int usd=0x7f080016;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -59,6 +66,8 @@ public final class R {
         public static final int claim_add_sdate=0x7f030005;
         public static final int claim_list=0x7f030006;
         public static final int expense_adder=0x7f030007;
+        public static final int expense_date_add=0x7f030008;
+        public static final int expense_get_currency=0x7f030009;
     }
     public static final class menu {
         public static final int add_claim=0x7f070000;

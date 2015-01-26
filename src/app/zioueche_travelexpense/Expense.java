@@ -7,13 +7,12 @@ public class Expense {
 	private String expcurrency;
 	private Date expdate;
 	private int expprice;
-	
-	
-	public Expense(String expname){
+
+	public Expense(String expname,Date expdate, String expcurrency, int expprice){
 		this.expname = expname;
-		//this.currency = expcurrency;
-		//this.date = expdate;
-		//this.price = expprice;
+		this.expcurrency = expcurrency;
+		this.expdate = expdate;
+		this.expprice = expprice;
 	}
 	
 	public String getName(){
@@ -36,5 +35,9 @@ public class Expense {
 		return getName();
 	}
 	//just testing the git repo
+
+	public Date getCDate() {
+		return expdate;
+	}
 
 }

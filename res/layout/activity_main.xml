@@ -23,11 +23,9 @@
            android:id="@+id/add_claim_button"
            android:layout_width="match_parent"
            android:layout_height="150dp"
-           android:layout_alignParentBottom="true"
-           android:layout_below="@+id/Title"
            android:layout_centerHorizontal="true"
-           android:layout_marginTop="22dp"
+           android:layout_centerVertical="true"
            android:onClick="goToAdd"
-           android:text="View Claims" />
+           android:text="Add Claims" />
 
 </RelativeLayout>

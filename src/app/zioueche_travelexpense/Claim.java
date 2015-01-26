@@ -1,7 +1,7 @@
 package app.zioueche_travelexpense;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Claim implements Serializable{
@@ -11,18 +11,17 @@ public class Claim implements Serializable{
 	private static final long serialVersionUID = 3325687864575767244L;
 	private String Name;
 	private ArrayList<Expense> expenseList;
-	private String sdate;
-	private String edate;
+	private Date sdate;
+	private Date edate;
 	private String status;
 	
 	//Claim object constructor NEED TO ADD STATUS
-	public Claim(String Name, String sdate, String edate){
+	public Claim(String Name, Date sdate2, Date edate2){
 		this.Name = Name;
 		this.expenseList = new ArrayList<Expense>();
-		this.sdate = sdate;
-		this.edate = edate;
+		this.sdate = sdate2;
+		this.edate = edate2;
 		//this.status = status;
-
 	}
 	
 	//get the claim name
@@ -46,12 +45,12 @@ public class Claim implements Serializable{
 	}
 	
 	//get the start date of the claim
-	public String getSDate(){
+	public Date getSDate(){
 		return sdate;
 	}
 	
 	//get the end date of the claim
-	public String getEDate(){
+	public Date getEDate(){
 		return edate;
 	}
 	

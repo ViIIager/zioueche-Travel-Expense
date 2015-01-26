@@ -54,15 +54,5 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, AddClaim.class);
 		startActivity(intent);
 	}
-		
-	public void CheckList(View v){
-		//int size = ClaimsList.claimList.size();
-		//String Added = String.format("there are %d claims in this list", size);
-		if (ClaimsList.isEmpty()){
-			Toast.makeText(this, "empty List!!!", Toast.LENGTH_SHORT).show();
-		}
-		else{Toast.makeText(MainActivity.this,"not empty" , Toast.LENGTH_SHORT).show();
-		}
-	}
 }
 	
