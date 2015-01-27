@@ -85,6 +85,9 @@ public class AddClaim extends Activity {
 				ListView expView = (ListView) findViewById(R.id.ExpenseListView);
 				Collection<Expense> expenses = list.get(position).getExpenses();
 				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
+				if (expense.size() > 1){
+					Collections.sort(expense, new CustomComparatorExpense());
+				}
 				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
 				expView.setAdapter(expAdap);
 				Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show();
@@ -99,7 +102,7 @@ public class AddClaim extends Activity {
 					int position, long id) {
 				final int finalPosition = position;
 				PopupMenu popup = new PopupMenu(AddClaim.this, view);
-				popup.getMenuInflater().inflate(R.menu.add_claim, popup.getMenu());
+				popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
 		            public boolean onMenuItemClick(MenuItem item) {  
 		            //DELETE button check.  
@@ -196,7 +199,6 @@ public class AddClaim extends Activity {
 		ct.addClaim(addClaim);
 		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
 		//saveInFile(addClaim);
-		setContentView(R.layout.activity_main);
 			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
 			//startActivity(intent);
 		

@@ -10,8 +10,8 @@ public class Expense {
 
 	public Expense(String expname,Date expdate, String expcurrency, int expprice){
 		this.expname = expname;
-		this.expcurrency = expcurrency;
 		this.expdate = expdate;
+		this.expcurrency = expcurrency;
 		this.expprice = expprice;
 	}
 	
@@ -34,8 +34,8 @@ public class Expense {
 	public String toString(){
 		return getName();
 	}
+	
 	//just testing the git repo
-
 	public Date getCDate() {
 		return expdate;
 	}

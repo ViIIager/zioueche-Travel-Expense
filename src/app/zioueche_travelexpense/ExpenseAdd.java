@@ -41,7 +41,7 @@ public class ExpenseAdd extends Activity{
 		ArrayList<Expense>elist = list.get(finalPosition).getExpenses();
 		elist.add(new Expense(name, date, currency,price));
 		Toast.makeText(ExpenseAdd.this, currency, Toast.LENGTH_SHORT).show();
-		Intent back = new Intent(this, AddClaim.class);
+		Intent back = new Intent(this, MainActivity.class);
 		startActivity(back);
 		//Toast.makeText(this, name+date+price+currency , Toast.LENGTH_LONG).show();
 	}
