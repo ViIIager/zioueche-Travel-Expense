@@ -10,7 +10,7 @@
         android:layout_height="133dp"
         android:layout_x="0dp"
         android:layout_y="326dp"
-        android:onClick="getEDate"
+        android:onClick="getEName"
         android:text="Next Step" />
 
     <EditText

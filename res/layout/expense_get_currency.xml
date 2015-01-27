@@ -5,19 +5,19 @@
     android:layout_height="match_parent" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/price_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="53dp"
         android:layout_y="69dp"
         android:ems="10"
-        android:inputType="numberDecimal" >
+        android:inputType="number" >
 
         <requestFocus />
     </EditText>
 
     <TextView
-        android:id="@+id/price_field"
+        android:id="@+id/prices_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="102dp"
@@ -26,13 +26,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/create_claim_button"
+        android:id="@+id/create_expense_button"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_x="0dp"
         android:layout_y="312dp"
         android:onClick="getEPrice"
-        android:text="Create Claim" />
+        android:text="Add Expense" />
 
     <RadioGroup
         android:id="@+id/radioGroup1"

@@ -40,7 +40,10 @@ public class ExpenseAdd extends Activity{
 		ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		ArrayList<Expense>elist = list.get(finalPosition).getExpenses();
 		elist.add(new Expense(name, date, currency,price));
-		Toast.makeText(this, name+date+price+currency , Toast.LENGTH_LONG).show();
+		Toast.makeText(ExpenseAdd.this, currency, Toast.LENGTH_SHORT).show();
+		Intent back = new Intent(this, AddClaim.class);
+		startActivity(back);
+		//Toast.makeText(this, name+date+price+currency , Toast.LENGTH_LONG).show();
 	}
 	
 	public void getEName(View v){
@@ -56,14 +59,7 @@ public class ExpenseAdd extends Activity{
 	}
 	
 	public void getEDate(View v){
-		
 		DatePicker expPicker = (DatePicker)findViewById(R.id.exp_picker);
-		/*Integer year = sdatePicker.getYear();
-        Integer month = sdatePicker.getMonth();
-        Integer day = sdatePicker.getDayOfMonth();
-        StringBuilder sb=new StringBuilder();
-        sb.append(year.toString()).append("-").append(month.toString()).append("-").append(day.toString()).append(" 00:00:00");
-        String sdate=sb.toString();*/
 		String Sdate = "not_empty";
 		if (!TextUtils.isEmpty(Sdate)){
 	        this.date = getDateFromDatePicket(expPicker);;
@@ -74,21 +70,24 @@ public class ExpenseAdd extends Activity{
 	}
 	public void getECurrency(View v){
 		RadioGroup rd= (RadioGroup)findViewById(R.id.radioGroup1);
-        rd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // checkedId is the RadioButton selected
-                RadioButton rb=(RadioButton)findViewById(checkedId);
-                Toast.makeText(getApplicationContext(), rb.getText(), Toast.LENGTH_SHORT).show();
-                ExpenseAdd.currency = (String) rb.getText();
-            }
-        });
+		
+		if(rd.getCheckedRadioButtonId()!=-1){
+		    int id= rd.getCheckedRadioButtonId();
+		    View radioButton = rd.findViewById(id);
+		    int radioId = rd.indexOfChild(radioButton);
+		    RadioButton btn = (RadioButton) rd.getChildAt(radioId);
+		    String selection = (String) btn.getText();
+		    
+		    ExpenseAdd.currency = selection;
+		    Toast.makeText(ExpenseAdd.this, currency, Toast.LENGTH_SHORT).show();
+		}
+		
         addExpense(v);
         
 	}
 	
 	public void getEPrice(View v){
-		EditText expname = (EditText) findViewById(R.id.name_field);
+		EditText expname = (EditText) findViewById(R.id.price_field);
 		int price = Integer.parseInt( expname.getText().toString() );
 		if (!TextUtils.isEmpty(expname.getText().toString())){
 			this.price = price;
