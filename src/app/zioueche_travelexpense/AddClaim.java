@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.Menu;
@@ -80,8 +81,12 @@ public class AddClaim extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Toast.makeText(AddClaim.this, "Clicked "+list.get(position), Toast.LENGTH_SHORT).show();
+				//Intent onclick = new Intent(AddClaim.this, ExpenseDetails.class);
+				//onclick.putExtra("claimpos", position);
+				//startActivity(onclick);
 				//adapter expenses
-				setContentView(R.layout.add_expense);
+				
+				setContentView(R.layout.add_expense);//might have to make this a separate activity to make the add expense functionality
 				ListView expView = (ListView) findViewById(R.id.ExpenseListView);
 				Collection<Expense> expenses = list.get(position).getExpenses();
 				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
@@ -90,7 +95,7 @@ public class AddClaim extends Activity {
 				}
 				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
 				expView.setAdapter(expAdap);
-				Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show();
+				//Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show(); //this is the adapter to carry over for expenses
 				}
 
 		});
@@ -125,15 +130,42 @@ public class AddClaim extends Activity {
 		  					
 		  				});
 		  				adb.show();
-		              }//end of delete button check
+		              }
+		              
 		              //START of ADD EXPENSE check
 		              if (item.getTitle().equals("Add Expense")){
-		            	  Intent intent = new Intent(AddClaim.this, ExpenseAdd.class);
-		            	  intent.putExtra("somename", finalPosition);
-		            	  startActivity(intent);
+		            	  Intent add_exp = new Intent(AddClaim.this, ExpenseAdd.class);
+		            	  add_exp.putExtra("somename", finalPosition);
+		            	  startActivity(add_exp);
 		            	  
 		 		              }
-		              //end of add expense check
+		              //what do do if Details button is clicked
+		              if (item.getTitle().equals("Get Claim Details")){
+		            	  Intent get_detail = new Intent(AddClaim.this, GetDetails.class);
+		            	  get_detail.putExtra("claim_position", finalPosition);
+		            	  startActivity(get_detail);
+		              }
+		              
+		              //Edit the claim we want.
+		              if (item.getTitle().equals("Edit Claim")){
+		            	  Intent edit = new Intent(AddClaim.this, EditClaim.class);
+		            	  edit.putExtra("pos", finalPosition);
+		            	  startActivity(edit);
+		            	  /*EditText new_name = (EditText) findViewById(R.id.new_claim_name);
+		            	  String p = new_name.getText().toString();
+		            	  String added = p;
+		            	  if (!TextUtils.isEmpty(added)){
+		            		  ClaimListController ct = new ClaimListController();
+		            		  ArrayList<Expense> newlist = list.get(finalPosition).getExpenses();
+		            		  Date nedate = list.get(finalPosition).getEDate();
+		            		  Date nsdate = list.get(finalPosition).getSDate();
+		            		  Claim claim = new Claim(added, nsdate, nedate, newlist);
+		            		  ClaimListController.getClaimList().deleteClaim(list.get(finalPosition));
+		            		  ct.addClaimIn(finalPosition, claim);*/
+		            		  claimAdapter.notifyDataSetChanged();
+		        
+		            	  }
+		            	  Toast.makeText(AddClaim.this, "Editing Claim: "+ list.get(finalPosition), Toast.LENGTH_SHORT).show();
 		              return true;  
 		             }  
 		            });  
@@ -144,6 +176,13 @@ public class AddClaim extends Activity {
 		});
 		
 	}
+	
+	/*
+	 * View methods below. required to run the code.
+	 * 
+	 */
+	
+
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -177,10 +216,6 @@ public class AddClaim extends Activity {
 	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-			
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -198,9 +233,6 @@ public class AddClaim extends Activity {
 		Claim addClaim = new Claim(name, sdate, edate);
 		ct.addClaim(addClaim);
 		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
-		//saveInFile(addClaim);
-			//Intent intent = new Intent(MainActivity.this, AddClaim.class);
-			//startActivity(intent);
 		
 	}
 	
@@ -259,9 +291,9 @@ public class AddClaim extends Activity {
 	    return calendar.getTime();
 	}
 	
-	
-	
-	
+	public void editComplete(View v){
+		
+	}
 	
 	//THIS IS THE PERSISTANCE AS DONE IN THE LAB> NOT SURE WHY IT IS NOT WORKING> I WILL LOOK AT IT LATER> 
 	

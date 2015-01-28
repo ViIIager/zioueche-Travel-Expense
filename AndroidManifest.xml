@@ -29,6 +29,15 @@
          <activity
             android:name=".ExpenseAdd">
          </activity>
+         <activity
+            android:name=".GetDetails">
+         </activity>
+         <activity
+            android:name=".ExpenseDetails">
+         </activity>
+ 		<activity
+            android:name=".EditClaim">
+         </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView
+        android:id="@+id/usd_tot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="120dp"
+        android:text="Total USD"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cad_tot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="192dp"
+        android:text="Total CAD"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/aud_tot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="258dp"
+        android:text="Total AUD"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/eur_tot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="328dp"
+        android:text="Total EUR"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/gbp_tot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="116dp"
+        android:layout_y="408dp"
+        android:text="Total GBP"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="32dp"
+        android:layout_y="34dp"
+        android:text="Start Date"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="82dp"
+        android:layout_y="0dp"
+        android:text="Claim Expenses"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="219dp"
+        android:layout_y="39dp"
+        android:text="End Date"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tot_usd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="150dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tot_cad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="224dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tot_aud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="294dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tot_eur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="370dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tot_gbp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="435dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/sdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="62dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/edate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="218dp"
+        android:layout_y="65dp"
+        android:text="TextView" />
+
+</AbsoluteLayout>

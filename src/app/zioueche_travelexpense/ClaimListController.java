@@ -18,4 +18,9 @@ public class ClaimListController {
 	public void addClaim(Claim claim){
 		getClaimList().addClaim(claim);
 	}
+	
+	public void addClaimIn(int position, Claim string){
+		getClaimList().addClaimAt(position, string);
+	}
+	
 }

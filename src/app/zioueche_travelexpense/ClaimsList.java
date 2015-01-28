@@ -35,6 +35,11 @@ public class ClaimsList implements Serializable{
 		notifyListeners();
 	}
 	
+	public void addClaimAt(int position, Claim string){
+		claimList.add(position, string);
+		notifyListeners();
+	}
+	
 	public void deleteClaim(Claim removeclaim){
 		claimList.remove(removeclaim);
 		notifyListeners();

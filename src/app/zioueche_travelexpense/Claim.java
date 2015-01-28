@@ -16,11 +16,19 @@ public class Claim implements Serializable{
 	private String status;
 	
 	//Claim object constructor NEED TO ADD STATUS
-	public Claim(String Name, Date sdate2, Date edate2){
+	public Claim(String Name, Date sdate, Date edate){
 		this.Name = Name;
 		this.expenseList = new ArrayList<Expense>();
-		this.sdate = sdate2;
-		this.edate = edate2;
+		this.sdate = sdate;
+		this.edate = edate;
+		//this.status = status;
+	}
+	
+	public Claim(String Name, Date sdate, Date edate, ArrayList<Expense> list){
+		this.Name = Name;
+		this.expenseList = list;
+		this.sdate = sdate;
+		this.edate = edate;
 		//this.status = status;
 	}
 	
@@ -76,5 +84,6 @@ public class Claim implements Serializable{
 		// TODO Auto-generated method stub
 		return expenseList;
 	}
+
 }
 	
