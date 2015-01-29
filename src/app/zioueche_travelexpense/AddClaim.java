@@ -47,6 +47,8 @@ public class AddClaim extends Activity {
 	String name;
 	Date sdate;
 	Date edate;
+	ArrayList<Claim> claim;
+	ListView listView;
 	//ArrayList<Claim> claim = (ArrayList<Claim>) ClaimListController.getClaimList().getClaim();
 	
 	@Override
@@ -55,7 +57,7 @@ public class AddClaim extends Activity {
 		setContentView(R.layout.add_claim);
 
 		//adapter for claim view
-		ListView listView = (ListView) findViewById(R.id.claimListView);
+		listView = (ListView) findViewById(R.id.claimListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		if (list.size() > 1){
@@ -134,13 +136,26 @@ public class AddClaim extends Activity {
 		              
 		              //Edit the claim we want.
 		              if (item.getTitle().equals("Edit Claim")){
-		            	  Intent edit = new Intent(AddClaim.this, EditClaim.class);
-		            	  edit.putExtra("pos", finalPosition);
-		            	  startActivity(edit);
-	            		  claimAdapter.notifyDataSetChanged();
-		        
+		            	  if (list.get(finalPosition).getStatus() != "submitted"){
+			            	  Intent edit = new Intent(AddClaim.this, EditClaim.class);
+			            	  edit.putExtra("pos", finalPosition);
+			            	  startActivity(edit);
+		            		  claimAdapter.notifyDataSetChanged();
+		            	  	}else{
+		            	  		Toast.makeText(AddClaim.this, "You cannot edit a submitted claim", Toast.LENGTH_SHORT).show();
+		            	  	}
+		            	  
 		            	  }
-		            	  Toast.makeText(AddClaim.this, "Editing Claim: "+ list.get(finalPosition), Toast.LENGTH_SHORT).show();
+		              if (item.getTitle().equals("Change Claim Status")){
+		            	  if (list.get(finalPosition).getStatus() == "submitted"){
+		            		  Toast.makeText(AddClaim.this, "You cannot edit a submitted claim", Toast.LENGTH_SHORT).show();
+		            	  }else{
+		            		  Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
+		            		  changeStatus.putExtra("popopo", finalPosition);
+		            		  startActivity(changeStatus);
+		            	  }
+		              }
+		            	  
 		              return true;  
 		             }  
 		            });  
@@ -152,6 +167,16 @@ public class AddClaim extends Activity {
 		
 	}
 	
+	/*@Override
+	
+	protected void onStart(){
+		super.onStart();
+		this.claim = loadFromFile();
+		ClaimsList cl = new ClaimsList();
+		cl.setClaimList(this.claim);
+		ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, this.claim);
+		listView.setAdapter(claimAdapter);
+	}*/
 	/*
 	 * View methods below. required to run the code.
 	 * 
@@ -207,6 +232,7 @@ public class AddClaim extends Activity {
 		ClaimListController ct = new ClaimListController();	
 		Claim addClaim = new Claim(name, sdate, edate);
 		ct.addClaim(addClaim);
+	//saveInFile(addClaim); // Get Persistance to work for this
 		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
 		
 	}
@@ -271,8 +297,8 @@ public class AddClaim extends Activity {
 	
 	//THIS IS THE PERSISTANCE AS DONE IN THE LAB> NOT SURE WHY IT IS NOT WORKING> I WILL LOOK AT IT LATER> 
 	
-	/*//Create persistent data file for arrays of expenses and lists
-	private void saveInFile(Claim claim) {
+   //Create persistent data file for arrays of expenses and lists
+/*	private void saveInFile(Claim claim) {
 		Gson gson = new Gson();
 		try {
 			FileOutputStream fos = openFileOutput(SAVEFILE,
@@ -297,7 +323,7 @@ public class AddClaim extends Activity {
 		try {
 			FileInputStream fis = openFileInput(SAVEFILE);
 			//Based on http://google.gson.googlecode.com/svn/trunk/gson/dos/javadoc/com/google/gson/Gson.html
-			Type listType = new TypeToken<ArrayList<String>>(){}.getType();
+			Type listType = new TypeToken<ArrayList<Claim>>(){}.getType();
 			InputStreamReader isr = new InputStreamReader(fis);
 			claim = gson.fromJson(isr, listType);
 			fis.close();

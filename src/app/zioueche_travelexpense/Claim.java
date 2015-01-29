@@ -21,6 +21,7 @@ public class Claim implements Serializable{
 		this.expenseList = new ArrayList<Expense>();
 		this.sdate = sdate;
 		this.edate = edate;
+		this.status = "in Progress";
 		//this.status = status;
 	}
 	
@@ -29,6 +30,7 @@ public class Claim implements Serializable{
 		this.expenseList = list;
 		this.sdate = sdate;
 		this.edate = edate;
+		this.status = "in Progress";
 		//this.status = status;
 	}
 	

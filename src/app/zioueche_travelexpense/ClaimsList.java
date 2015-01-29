@@ -35,6 +35,9 @@ public class ClaimsList implements Serializable{
 		notifyListeners();
 	}
 	
+	public void setClaimList(ArrayList<Claim> clist){
+		this.claimList = clist;
+	}
 	public void addClaimAt(int position, Claim string){
 		claimList.add(position, string);
 		notifyListeners();
