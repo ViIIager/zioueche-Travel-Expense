@@ -42,6 +42,13 @@ public class Claim implements Serializable{
 		expenseList.add(expense);
 	}
 	
+	public void setExpenses(ArrayList<Expense> list){
+		this.expenseList = list;
+	}
+	
+	public void deleteExpense(int position){
+		expenseList.remove(position);
+	}
 	//change the name to a string.
 	public String toString(){
 		return getName();

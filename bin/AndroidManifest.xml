@@ -38,6 +38,9 @@
  		<activity
             android:name=".EditClaim">
          </activity>
+         <activity
+            android:name=".ViewDetails">
+         </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
 package app.zioueche_travelexpense;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ public class GetDetails extends Activity {
 	static int aud;
 	static int gbp;
 	static int eur;
+	static Date sdate;
+	static Date edate;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		this.usd = 0;
@@ -36,10 +40,14 @@ public class GetDetails extends Activity {
 		ArrayList<Claim> clist = new ArrayList<Claim>(cl);
 		Claim claim = clist.get(finalPosition);
 		ArrayList<Expense> elist = claim.getExpenses();
+		Claim c = clist.get(finalPosition);
+		this.sdate = c.getSDate();
+		this.edate = c.getEDate();
 		return elist;
 	}
 	
 	public void calculatePrices(){
+		int finalPosition = getIntent().getIntExtra("claim_position",0);
 		ArrayList<Expense> list = getExpenses();
 		for (int i = 0; i < list.size(); i++){
 			Expense e = list.get(i);
@@ -58,6 +66,7 @@ public class GetDetails extends Activity {
 			if (e.getCurrency().equals("GBP")){
 				GetDetails.gbp += e.getPrice();
 			}
+			
 		}
 		
 		TextView usds = (TextView) findViewById(R.id.tot_usd);
@@ -70,6 +79,13 @@ public class GetDetails extends Activity {
 		eurs.setText("" + this.eur);
 		TextView gbps = (TextView) findViewById(R.id.tot_gbp);
 		gbps.setText("" + this.gbp);
-		
+		TextView sdates = (TextView) findViewById(R.id.sdate);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+  	  	String sdate = sdf.format(this.sdate);
+		sdates.setText(sdate);
+		TextView edates = (TextView) findViewById(R.id.edate);
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
+  	  	String edate = sdf2.format(this.edate);
+		edates.setText(edate);
 	}
 }

@@ -47,7 +47,7 @@ public class AddClaim extends Activity {
 	String name;
 	Date sdate;
 	Date edate;
-	ArrayList<Claim> claim = (ArrayList<Claim>) ClaimListController.getClaimList().getClaim();
+	//ArrayList<Claim> claim = (ArrayList<Claim>) ClaimListController.getClaimList().getClaim();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,6 @@ public class AddClaim extends Activity {
 		setContentView(R.layout.add_claim);
 
 		//adapter for claim view
-		
 		ListView listView = (ListView) findViewById(R.id.claimListView);
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
@@ -81,12 +80,12 @@ public class AddClaim extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Toast.makeText(AddClaim.this, "Clicked "+list.get(position), Toast.LENGTH_SHORT).show();
-				//Intent onclick = new Intent(AddClaim.this, ExpenseDetails.class);
-				//onclick.putExtra("claimpos", position);
-				//startActivity(onclick);
-				//adapter expenses
+				Intent onclick = new Intent(AddClaim.this, ExpenseDetails.class);
+				onclick.putExtra("claimpos", position);
+				startActivity(onclick);
 				
-				setContentView(R.layout.add_expense);//might have to make this a separate activity to make the add expense functionality
+				//adapter expenses
+				/*setContentView(R.layout.add_expense);//might have to make this a separate activity to make the add expense functionality
 				ListView expView = (ListView) findViewById(R.id.ExpenseListView);
 				Collection<Expense> expenses = list.get(position).getExpenses();
 				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
@@ -96,8 +95,8 @@ public class AddClaim extends Activity {
 				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
 				expView.setAdapter(expAdap);
 				//Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show(); //this is the adapter to carry over for expenses
-				}
-
+				*/
+			}
 		});
 		
 		//LONG CLICK FUNCTIONS
@@ -263,13 +262,12 @@ public class AddClaim extends Activity {
 	
 	public void getEDate(View v){
 		DatePicker edatePicker = (DatePicker)findViewById(R.id.edate_picker);
-		String Edate = "not_empty";
-		if (!TextUtils.isEmpty(Edate)){
+		if (!getDateFromDatePicket(edatePicker).before(this.sdate)){
 	        this.edate = getDateFromDatePicket(edatePicker);
 	        addClaims(v);
 	        this.finish();
 		}else{
-			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
+			Toast.makeText(AddClaim.this,"End Date cannot come before start date. Please select another date", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
