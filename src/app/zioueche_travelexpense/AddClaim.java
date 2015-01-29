@@ -83,19 +83,6 @@ public class AddClaim extends Activity {
 				Intent onclick = new Intent(AddClaim.this, ExpenseDetails.class);
 				onclick.putExtra("claimpos", position);
 				startActivity(onclick);
-				
-				//adapter expenses
-				/*setContentView(R.layout.add_expense);//might have to make this a separate activity to make the add expense functionality
-				ListView expView = (ListView) findViewById(R.id.ExpenseListView);
-				Collection<Expense> expenses = list.get(position).getExpenses();
-				final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
-				if (expense.size() > 1){
-					Collections.sort(expense, new CustomComparatorExpense());
-				}
-				final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(AddClaim.this, android.R.layout.simple_list_item_1, expense);
-				expView.setAdapter(expAdap);
-				//Toast.makeText(AddClaim.this, ""+list.get(position).getSDate(), Toast.LENGTH_SHORT).show(); //this is the adapter to carry over for expenses
-				*/
 			}
 		});
 		
@@ -150,18 +137,7 @@ public class AddClaim extends Activity {
 		            	  Intent edit = new Intent(AddClaim.this, EditClaim.class);
 		            	  edit.putExtra("pos", finalPosition);
 		            	  startActivity(edit);
-		            	  /*EditText new_name = (EditText) findViewById(R.id.new_claim_name);
-		            	  String p = new_name.getText().toString();
-		            	  String added = p;
-		            	  if (!TextUtils.isEmpty(added)){
-		            		  ClaimListController ct = new ClaimListController();
-		            		  ArrayList<Expense> newlist = list.get(finalPosition).getExpenses();
-		            		  Date nedate = list.get(finalPosition).getEDate();
-		            		  Date nsdate = list.get(finalPosition).getSDate();
-		            		  Claim claim = new Claim(added, nsdate, nedate, newlist);
-		            		  ClaimListController.getClaimList().deleteClaim(list.get(finalPosition));
-		            		  ct.addClaimIn(finalPosition, claim);*/
-		            		  claimAdapter.notifyDataSetChanged();
+	            		  claimAdapter.notifyDataSetChanged();
 		        
 		            	  }
 		            	  Toast.makeText(AddClaim.this, "Editing Claim: "+ list.get(finalPosition), Toast.LENGTH_SHORT).show();

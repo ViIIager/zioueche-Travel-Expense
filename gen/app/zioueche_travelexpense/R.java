@@ -28,7 +28,7 @@ public final class R {
         public static final int AbsoluteLayout1=0x7f08000b;
         public static final int AddExpense=0x7f080037;
         public static final int CancelAction=0x7f080032;
-        public static final int DeleteItem=0x7f080039;
+        public static final int DeleteItem=0x7f08003a;
         public static final int ExpenseListView=0x7f080004;
         public static final int RelativeLayout1=0x7f080003;
         public static final int Title=0x7f080000;
@@ -36,6 +36,7 @@ public final class R {
         public static final int addClaim=0x7f080005;
         public static final int add_claim_button=0x7f080001;
         public static final int add_claim_field=0x7f080008;
+        public static final int add_exp=0x7f080034;
         public static final int aud=0x7f08002c;
         public static final int aud_tot=0x7f08000e;
         public static final int button1=0x7f08001c;
@@ -46,14 +47,13 @@ public final class R {
         public static final int currency_used=0x7f080022;
         public static final int datePicker1=0x7f08001d;
         public static final int date_view=0x7f080025;
-        public static final int delete=0x7f080035;
-        public static final int details=0x7f080036;
+        public static final int delete=0x7f080036;
+        public static final int details=0x7f080035;
         public static final int done_butt=0x7f080031;
         public static final int edate=0x7f080019;
         public static final int edate_picker=0x7f080006;
-        public static final int editClaimItem=0x7f080034;
         public static final int editText1=0x7f08002f;
-        public static final int edit_claim=0x7f08003a;
+        public static final int edit_claim=0x7f080039;
         public static final int eur=0x7f08002d;
         public static final int eur_tot=0x7f08000f;
         public static final int exp_picker=0x7f08001e;
@@ -104,8 +104,9 @@ public final class R {
     public static final class menu {
         public static final int add_claim=0x7f070000;
         public static final int main=0x7f070001;
-        public static final int popup_expense=0x7f070002;
-        public static final int popup_menu=0x7f070003;
+        public static final int on_expense_pop=0x7f070002;
+        public static final int popup_expense=0x7f070003;
+        public static final int popup_menu=0x7f070004;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;

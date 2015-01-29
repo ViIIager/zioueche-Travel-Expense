@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,8 +24,10 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ExpenseDetails extends Activity {
-
+	static int position;
+	
 	protected void onCreate(Bundle SavedInstanceState){
+		
 		super.onCreate(SavedInstanceState);
 		setContentView(R.layout.add_expense);
 		ClaimListController ct = new ClaimListController();
@@ -33,6 +36,7 @@ public class ExpenseDetails extends Activity {
 		Collection<Claim> coll = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(coll);
 		int finalPosition = getIntent().getIntExtra("claimpos",0);
+		this.position = finalPosition;
 		ListView expView = (ListView) findViewById(R.id.ExpenseListView);
 		Collection<Expense> expenses = list.get(finalPosition).getExpenses();
 		final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
@@ -49,12 +53,11 @@ public class ExpenseDetails extends Activity {
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				final int expPosition = position;
-				final int finalPosition = getIntent().getIntExtra("claimpos",0);
+				final int finalPosition = ExpenseDetails.position;
 				PopupMenu popup = new PopupMenu(ExpenseDetails.this, view);
 				popup.getMenuInflater().inflate(R.menu.popup_expense, popup.getMenu());
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
 		            public boolean onMenuItemClick(MenuItem item) {  
-		            //DELETE button check.  
 		              if (item.getTitle().equals("Delete Expense")){
 		            	AlertDialog.Builder adb = new AlertDialog.Builder(ExpenseDetails.this);
 		  				adb.setMessage("Delete "+ list.get(finalPosition).getExpenses().get(expPosition)+"?");
@@ -68,12 +71,8 @@ public class ExpenseDetails extends Activity {
 		  						expAdap.clear();
 		  						expAdap.addAll(expense);
 		  						expAdap.notifyDataSetChanged();
-		  						//test to make sure it was deleting from the actual list and not just the local instance
-		  						//for (Expense trall : list.get(finalPosition).getExpenses()){
-		  						//	Toast.makeText(ExpenseDetails.this, trall+"", Toast.LENGTH_SHORT).show();
-		  						//}
-		  						
 		  					}
+		  					
 		  				});
 		  				adb.setNegativeButton("Cancel",new OnClickListener(){
 
@@ -84,6 +83,9 @@ public class ExpenseDetails extends Activity {
 		  				});
 		  				adb.show();
 		              }
+		              
+		            	  
+
 		              //Edit the claim we want.
 		              if (item.getTitle().equals("Get Expense Details")){
 		            	  setContentView(R.layout.expense_detail_view);
@@ -110,4 +112,30 @@ public class ExpenseDetails extends Activity {
 			
 		});
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.on_expense_pop, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.add_exp) {
+		//  final int finalPosition = getIntent().getIntExtra("claimpos",0);
+      	  Intent from_within = new Intent(ExpenseDetails.this, ExpenseAdd.class);
+      	  from_within.putExtra("somename", this.position);
+      	  startActivity(from_within);
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+//	public void editClaims(MenuItem item){
+//		Toast.makeText(this, "edit students pressed", Toast.LENGTH_SHORT).show();
+//	}
 }
