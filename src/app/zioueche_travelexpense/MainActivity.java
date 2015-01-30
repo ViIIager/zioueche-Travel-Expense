@@ -1,13 +1,13 @@
 package app.zioueche_travelexpense;
 /* TO-DO list:
  * 
+ * - Status update needs to be finished. infrastructure is ready. ChangeStatus.java and change_claim_status.xml
+ * - figure out persistence
+ * - Change number input in expense price to decimal number
+ * - 
  * -
- * - adding expenses to the claim WORK ON THIS NEXT> THIS IS CRUCIAL
- * - finish the expense add page THIS GOES WITH 2
- * - returned/approved/accepted are statuses(check-boxes) that affect the class Claim's STATUS AFTER CLAIM IS EDITED
- * - add date to claim AFTER ALL ABOVE
- * - figure out how to link claims and expenses. MAIN PART OF CRUCIAL
- * - Look at claim CLass to see what I need to add to the constructor MAYBE AT END?  EDIT from later?  easier than doing everything else.
+ * - 
+ * -
  * -*/
 
 import android.app.Activity;

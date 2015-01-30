@@ -15,23 +15,23 @@ public class Claim implements Serializable{
 	private Date edate;
 	private String status;
 	
-	//Claim object constructor NEED TO ADD STATUS
+	//Claim object constructor on new create
 	public Claim(String Name, Date sdate, Date edate){
 		this.Name = Name;
 		this.expenseList = new ArrayList<Expense>();
 		this.sdate = sdate;
 		this.edate = edate;
 		this.status = "in Progress";
-		//this.status = status;
 	}
 	
-	public Claim(String Name, Date sdate, Date edate, ArrayList<Expense> list){
+	//contsructor on edit.
+	public Claim(String Name, Date sdate, Date edate,String status, ArrayList<Expense> list){
 		this.Name = Name;
 		this.expenseList = list;
 		this.sdate = sdate;
 		this.edate = edate;
 		this.status = "in Progress";
-		//this.status = status;
+		this.status = status;
 	}
 	
 	//get the claim name

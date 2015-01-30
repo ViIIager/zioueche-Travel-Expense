@@ -1,5 +1,6 @@
 package app.zioueche_travelexpense;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -80,12 +81,10 @@ public class GetDetails extends Activity {
 		TextView gbps = (TextView) findViewById(R.id.tot_gbp);
 		gbps.setText("" + this.gbp);
 		TextView sdates = (TextView) findViewById(R.id.sdate);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-  	  	String sdate = sdf.format(this.sdate);
+  	  	String sdate = DateFormat.getDateInstance().format(this.sdate);
 		sdates.setText(sdate);
 		TextView edates = (TextView) findViewById(R.id.edate);
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
-  	  	String edate = sdf2.format(this.edate);
+  	  	String edate = DateFormat.getDateInstance().format(this.edate);
 		edates.setText(edate);
 	}
 }

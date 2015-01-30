@@ -41,6 +41,15 @@
          <activity
             android:name=".ViewDetails">
          </activity>
+         <activity
+            android:name=".NewClaim">
+         </activity>
+         <activity
+            android:name=".ChangeStatus">
+         </activity>
+         <activity
+            android:name=".DeleteClaim">
+         </activity>
     </application>
 
 </manifest>

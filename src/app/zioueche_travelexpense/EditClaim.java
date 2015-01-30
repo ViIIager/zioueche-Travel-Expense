@@ -30,8 +30,9 @@ public class EditClaim extends Activity {
   		 	ArrayList<Expense> newlist = list.get(finalPosition).getExpenses();
   		 	Date nedate = list.get(finalPosition).getEDate();
   		 	Date nsdate = list.get(finalPosition).getSDate();
+  		 	String nstatus = list.get(finalPosition).getStatus();
   		 	Claim remove_claim = list.get(finalPosition);
-  		 	Claim claim = new Claim(added, nsdate, nedate, newlist);
+  		 	Claim claim = new Claim(added, nsdate, nedate, nstatus, newlist);
   		 	ClaimListController.getClaimList().deleteClaim(remove_claim);
   		 	ct.addClaimIn(finalPosition, claim);
 		Intent intent = new Intent(this, AddClaim.class);

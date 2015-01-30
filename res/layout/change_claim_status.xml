@@ -1,30 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/AbsoluteLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+     >
 
-    <RadioButton
-        android:id="@+id/in"
+    <Button
+        android:id="@+id/set_status"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_x="0dp"
+        android:layout_y="349dp"
+        android:text="Set Status"
+        android:onClick="ChangeStatus" />
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RadioButton" />
+        android:layout_x="63dp"
+        android:layout_y="33dp"
+        android:text="Select Claim Status"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <RadioButton
-        android:id="@+id/submittd"
+    <RadioGroup
+        android:id="@+id/statusChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RadioButton" />
+        android:layout_x="103dp"
+        android:layout_y="118dp" >
 
-    <RadioButton
-        android:id="@+id/approved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton" />
+        <RadioButton
+            android:id="@+id/inprogress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="In Progress" />
 
-    <RadioButton
-        android:id="@+id/returned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton" />
+        <RadioButton
+            android:id="@+id/approved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Approved" />
 
-</RadioGroup>
+        <RadioButton
+            android:id="@+id/returned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Returned" />
+
+        <RadioButton
+            android:id="@+id/submitted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submitted" />
+    </RadioGroup>
+
+</AbsoluteLayout>

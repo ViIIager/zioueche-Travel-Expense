@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -42,7 +43,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
-public class AddClaim extends Activity {
+public class AddClaim extends ListActivity {
 	private static final String SAVEFILE = "file.sav";
 	String name;
 	Date sdate;
@@ -57,14 +58,15 @@ public class AddClaim extends Activity {
 		setContentView(R.layout.add_claim);
 
 		//adapter for claim view
-		listView = (ListView) findViewById(R.id.claimListView);
+		listView = (ListView) findViewById(android.R.id.list);
+		
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		if (list.size() > 1){
 			Collections.sort(list, new CustomComparatorClaim());
 		}
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
-		listView.setAdapter(claimAdapter);
+		final CustomAdapterClaim claimAdapter = new CustomAdapterClaim(this, R.layout.custom_view_claim, list);
+	    setListAdapter(claimAdapter);
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -99,32 +101,27 @@ public class AddClaim extends Activity {
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
 		            public boolean onMenuItemClick(MenuItem item) {  
 		            //DELETE button check.  
-		              if (item.getTitle().equals("Delete")){
-		            	AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
-		  				adb.setMessage("Delete "+ list.get(finalPosition).toString()+"?");
-		  				adb.setCancelable(true);
-		  				adb.setPositiveButton("Delete",new OnClickListener(){
-		  					@Override
-		  					public void onClick(DialogInterface dialog, int which) {
-		  						Claim claim = list.get(finalPosition);
-		  						ClaimListController.getClaimList().deleteClaim(claim);
-		  					}
-		  				});
-		  				adb.setNegativeButton("Cancel",new OnClickListener(){
-
-		  					@Override
-		  					public void onClick(DialogInterface dialog, int which) {						
-		  					}
-		  					
-		  				});
-		  				adb.show();
-		              }
+		            	if (item.getTitle().equals("Delete")){
+		            		if (list.get(finalPosition).getStatus().equals("Submitted")){
+		            			Toast.makeText(AddClaim.this, "You cannot edit a submitted claim until it has been approved", Toast.LENGTH_SHORT).show();
+		            		}else{
+		            		  Intent delete = new Intent(AddClaim.this, DeleteClaim.class);
+		            		  delete.putExtra("pospos", finalPosition);
+		            		  Toast.makeText(AddClaim.this, ""+finalPosition, Toast.LENGTH_SHORT).show();
+		            		  startActivity(delete);
+				   
+		            	  	}
+		              }	
 		              
 		              //START of ADD EXPENSE check
 		              if (item.getTitle().equals("Add Expense")){
-		            	  Intent add_exp = new Intent(AddClaim.this, ExpenseAdd.class);
-		            	  add_exp.putExtra("somename", finalPosition);
-		            	  startActivity(add_exp);
+		            	  if (list.get(finalPosition).getStatus().equals("Submitted") || list.get(finalPosition).getStatus().equals("Approved")){
+		            		  Toast.makeText(AddClaim.this, "You cannot edit a submitted or approved claim", Toast.LENGTH_SHORT).show();
+		            	  	}else{
+			            	  Intent add_exp = new Intent(AddClaim.this, ExpenseAdd.class);
+			            	  add_exp.putExtra("somename", finalPosition);
+			            	  startActivity(add_exp);
+		            	  	}
 		            	  
 		 		              }
 		              //what do do if Details button is clicked
@@ -136,34 +133,56 @@ public class AddClaim extends Activity {
 		              
 		              //Edit the claim we want.
 		              if (item.getTitle().equals("Edit Claim")){
-		            	  if (list.get(finalPosition).getStatus() != "submitted"){
-			            	  Intent edit = new Intent(AddClaim.this, EditClaim.class);
-			            	  edit.putExtra("pos", finalPosition);
-			            	  startActivity(edit);
-		            		  claimAdapter.notifyDataSetChanged();
+		            	  if (list.get(finalPosition).getStatus().equals("Submitted") || list.get(finalPosition).getStatus().equals("Approved")){
+		            		  Toast.makeText(AddClaim.this, "You cannot edit a submitted or approved claim", Toast.LENGTH_SHORT).show();
 		            	  	}else{
-		            	  		Toast.makeText(AddClaim.this, "You cannot edit a submitted claim", Toast.LENGTH_SHORT).show();
+		            	  		Intent edit = new Intent(AddClaim.this, EditClaim.class);
+				            	  edit.putExtra("pos", finalPosition);
+				            	  startActivity(edit);
+			            		  claimAdapter.notifyDataSetChanged();
 		            	  	}
 		            	  
 		            	  }
 		              if (item.getTitle().equals("Change Claim Status")){
-		            	  if (list.get(finalPosition).getStatus() == "submitted"){
-		            		  Toast.makeText(AddClaim.this, "You cannot edit a submitted claim", Toast.LENGTH_SHORT).show();
-		            	  }else{
-		            		  Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
-		            		  changeStatus.putExtra("popopo", finalPosition);
-		            		  startActivity(changeStatus);
+		            	  if (list.get(finalPosition).getStatus().equals("Submitted")){
+		            		  AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
+		          			adb.setMessage("Set "+ list.get(finalPosition).toString()+"'s status to Returned?");
+		          			adb.setCancelable(true);
+		          			adb.setPositiveButton("Yes",new OnClickListener(){
+		          				public void onClick(DialogInterface dialog, int which) {
+		          					Claim claim = list.get(finalPosition);
+		          					claim.editStatus("Returned");
+		          					claimAdapter.notifyDataSetChanged();
+		          				}
+		          			});
+				            	
+		          			adb.setNegativeButton("No",new OnClickListener(){
+		          				@Override
+				          		public void onClick(DialogInterface dialog, int which) {	
+				          			Toast.makeText(AddClaim.this, "You can only change to returned while claim is submitted", Toast.LENGTH_LONG).show();
+				          		}
+		          			});
+				          	adb.show();
+				            	  }else{
+				            		  Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
+				            		  changeStatus.putExtra("popopo", finalPosition);
+				            		  startActivity(changeStatus);
+				            	  }
+		            	  if (list.get(finalPosition).getStatus().equals("Approved")){
+		            		  Toast.makeText(AddClaim.this, "You can no longer make any changes to this claim", Toast.LENGTH_LONG).show();
+		            		  AddClaim.this.finish();
 		            	  }
 		              }
-		            	  
+				            	  
 		              return true;  
-		             }  
+		            }  
 		            });  
 				popup.show();
 			return true;
 			}
 			
 		});
+		
 		
 	}
 	
@@ -191,7 +210,7 @@ public class AddClaim extends Activity {
 		return true;
 	}
 
-	protected void onDeleteClick(final int position, final ArrayList<Claim> list){
+	/*protected void onDeleteClick(final int position, final ArrayList<Claim> list){
 		AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
 		adb.setMessage("Delete "+ list.get(position).toString()+"?");
 		adb.setCancelable(true);
@@ -212,8 +231,8 @@ public class AddClaim extends Activity {
 			}
 			
 		});
-		adb.show();
-	}
+		adb.show();*/
+	//}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
@@ -225,10 +244,18 @@ public class AddClaim extends Activity {
 	
 	public void addClaimView(MenuItem item){
 		Toast.makeText(this, "going to claim creation page", Toast.LENGTH_SHORT).show();
-		setContentView(R.layout.claim_add_page);
+		goToNew();
+		
+		//setContentView(R.layout.claim_add_page);
+	}
+
+	private void goToNew() {
+		Intent test = new Intent(this, NewClaim.class);
+		startActivity(test);
+		
 	}
 	
-	public void addClaims(View v){
+	/*public void addClaims(View v){
 		ClaimListController ct = new ClaimListController();	
 		Claim addClaim = new Claim(name, sdate, edate);
 		ct.addClaim(addClaim);
@@ -294,7 +321,7 @@ public class AddClaim extends Activity {
 	public void editComplete(View v){
 		
 	}
-	
+	*/
 	//THIS IS THE PERSISTANCE AS DONE IN THE LAB> NOT SURE WHY IT IS NOT WORKING> I WILL LOOK AT IT LATER> 
 	
    //Create persistent data file for arrays of expenses and lists
