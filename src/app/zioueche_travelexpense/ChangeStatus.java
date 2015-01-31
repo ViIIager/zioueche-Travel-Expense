@@ -37,5 +37,6 @@ public class ChangeStatus extends Activity {
 		}
 	Intent intent = new Intent(this, AddClaim.class);
 	startActivity(intent);	
+	finish();
 	}
 }

@@ -133,6 +133,7 @@ public class ExpenseDetails extends Activity {
       	  Intent from_within = new Intent(ExpenseDetails.this, ExpenseAdd.class);
       	  from_within.putExtra("somename", this.position);
       	  startActivity(from_within);
+      	  finish();
 		}
 		return super.onOptionsItemSelected(item);
 	}

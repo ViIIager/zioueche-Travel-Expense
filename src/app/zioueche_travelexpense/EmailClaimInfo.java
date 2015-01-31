@@ -1,5 +1,6 @@
 package app.zioueche_travelexpense;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class EmailClaimInfo extends Activity {
-	private String message;
+	private String message = "";
 	private String email_to;
 	private String subject;
 	private int position;
@@ -32,16 +33,36 @@ public class EmailClaimInfo extends Activity {
 		Claim claim = list.get(position);
 		subjectField.setText(claim+"");
 		ArrayList<Expense> elist = claim.getExpenses();
+		message += new StringBuilder()
+        .append("Claim Name     ")
+        .append(claim.getName()+"\n")
+        .append("Claim Start Date     ")
+        .append(DateFormat.getDateInstance().format(claim.getSDate())+"\n")
+        .append("Claim End Date     ")
+        .append(DateFormat.getDateInstance().format(claim.getEDate())+"\n")
+        .append("Number of Expenses:     "+claim.getExpenses().size())
+        .append("\n").append("\n").append("\n").toString();
+		int count = 0;
 		for (Expense e: elist){
-			if (this.message == null){
-				this.message = " "+e.getName()+"\n"+e.getCurrency();
-			}else{
-			this.message += e.getName()+"\t"+e.getCurrency();
-			Toast.makeText(EmailClaimInfo.this, message, Toast.LENGTH_SHORT).show();
+			count += 1;
+			message += new StringBuilder()
+		           .append("Expense "+count+"\n")
+		           .append("Expense Name     ")
+		           .append(e.getName()+"\n")
+		           .append("Expense Date     ")
+		           .append(DateFormat.getDateInstance().format(e.getCDate())+"\n")
+		           .append("Expense Price     ")
+		           .append(e.getPrice()+"\n")
+		           .append("Expense Currency     ")
+		           .append(e.getCurrency()+"\n")
+		           .append("\n")
+		           .append("\n")
+		           .toString();
 			}
-		}
 		this.subject = list.get(position).getName().toString();
-		subjectField.setText(subject);
+		subjectField.setText(subject+"Claim as requested");
+		EditText messageField = (EditText)findViewById(R.id.editTextMessage);
+		messageField.setText(message);
 		SendButton.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v){
@@ -53,6 +74,7 @@ public class EmailClaimInfo extends Activity {
 				  
 				  email.setType("message/rfc822");
 				  startActivity(Intent.createChooser(email, "Choose an Email client :"));
+				  finish();
 				}
 			
 			});

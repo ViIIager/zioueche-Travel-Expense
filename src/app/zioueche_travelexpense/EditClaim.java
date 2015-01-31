@@ -15,9 +15,8 @@ public class EditClaim extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.name_change);
-		
-  		 	
 	}
+	
 	public void editComplete(View v){
 		int finalPosition = getIntent().getIntExtra("pos",0);
 		EditText new_name = (EditText) findViewById(R.id.new_claim_name);
@@ -35,8 +34,9 @@ public class EditClaim extends Activity {
   		 	Claim claim = new Claim(added, nsdate, nedate, nstatus, newlist);
   		 	ClaimListController.getClaimList().deleteClaim(remove_claim);
   		 	ct.addClaimIn(finalPosition, claim);
-		Intent intent = new Intent(this, AddClaim.class);
-		startActivity(intent);
+  		 	Intent backtolist = new Intent(this, AddClaim.class);
+  		 	startActivity(backtolist);
+  		 	finish();
 	}
 	}
 }

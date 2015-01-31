@@ -67,6 +67,7 @@ public class AddClaim extends ListActivity {
 		}
 		final CustomAdapterClaim claimAdapter = new CustomAdapterClaim(this, R.layout.custom_view_claim, list);
 	    setListAdapter(claimAdapter);
+		claimAdapter.notifyDataSetChanged();
 		
 		//Added observer pattern
 		ClaimListController.getClaimList().addListener(new Listener(){
@@ -109,6 +110,7 @@ public class AddClaim extends ListActivity {
 		            		  delete.putExtra("pospos", finalPosition);
 		            		  Toast.makeText(AddClaim.this, ""+finalPosition, Toast.LENGTH_SHORT).show();
 		            		  startActivity(delete);
+		            		  
 				   
 		            	  	}
 		              }	
@@ -121,6 +123,7 @@ public class AddClaim extends ListActivity {
 			            	  Intent add_exp = new Intent(AddClaim.this, ExpenseAdd.class);
 			            	  add_exp.putExtra("somename", finalPosition);
 			            	  startActivity(add_exp);
+			            	  finish();
 		            	  	}
 		            	  
 		 		              }
@@ -129,6 +132,7 @@ public class AddClaim extends ListActivity {
 		            	  Intent get_detail = new Intent(AddClaim.this, GetDetails.class);
 		            	  get_detail.putExtra("claim_position", finalPosition);
 		            	  startActivity(get_detail);
+		            	  finish();
 		              }
 		              
 		              //Edit the claim we want.
@@ -139,6 +143,7 @@ public class AddClaim extends ListActivity {
 		            	  		Intent edit = new Intent(AddClaim.this, EditClaim.class);
 				            	  edit.putExtra("pos", finalPosition);
 				            	  startActivity(edit);
+				            	  finish();
 			            		  claimAdapter.notifyDataSetChanged();
 		            	  	}
 		            	  
@@ -167,6 +172,7 @@ public class AddClaim extends ListActivity {
 				            		  Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
 				            		  changeStatus.putExtra("popopo", finalPosition);
 				            		  startActivity(changeStatus);
+				            		  finish();
 				            	  }
 		            	  if (list.get(finalPosition).getStatus().equals("Approved")){
 		            		  Toast.makeText(AddClaim.this, "You can no longer make any changes to this claim", Toast.LENGTH_LONG).show();
@@ -177,6 +183,7 @@ public class AddClaim extends ListActivity {
 		            	  Intent email = new Intent(AddClaim.this, EmailClaimInfo.class);
 		            	  email.putExtra("emailPos", finalPosition);
 		            	  startActivity(email);
+		            	  finish();
 		              }
 				            	  
 		              return true;  
@@ -226,88 +233,18 @@ public class AddClaim extends ListActivity {
 	
 	public void addClaimView(MenuItem item){
 		Toast.makeText(this, "going to claim creation page", Toast.LENGTH_SHORT).show();
-		goToNew();
+		//goToNew();
 		
 		//setContentView(R.layout.claim_add_page);
 	}
 
-	private void goToNew() {
+	public void goToNew(View v) {
 		Intent test = new Intent(this, NewClaim.class);
 		startActivity(test);
-		
+		finish();
 	}
 	
-	/*public void addClaims(View v){
-		ClaimListController ct = new ClaimListController();	
-		Claim addClaim = new Claim(name, sdate, edate);
-		ct.addClaim(addClaim);
-	//saveInFile(addClaim); // Get Persistance to work for this
-		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
-		
-	}
-	
-	public void getClaimName(View v){
-		EditText textView = (EditText) findViewById(R.id.add_claim_field);
-		String added = textView.getText().toString();
-		if (!TextUtils.isEmpty(added)){
-			//1. Gets name of Claim
-			this.name = added;
-			textView.setText("");
-			setContentView(R.layout.claim_add_sdate);
-		}else{
-			Toast.makeText(AddClaim.this,"Please enter a Name before continuing", Toast.LENGTH_SHORT).show();
-		}
-	}
-	
-	public void getSDate(View v){
-		DatePicker sdatePicker = (DatePicker)findViewById(R.id.sdate_picker);
-		String Sdate = "not_empty";
-		if (!TextUtils.isEmpty(Sdate)){
-	        this.sdate = this.edate = getDateFromDatePicket(sdatePicker);;
-	        setContentView(R.layout.claim_add_edate);
-		}else{
-			Toast.makeText(AddClaim.this,"Please enter a Start date before continuing", Toast.LENGTH_SHORT).show();
-		}
-        setContentView(R.layout.claim_add_edate);
-	}
-	
-	public void getEDate(View v){
-		DatePicker edatePicker = (DatePicker)findViewById(R.id.edate_picker);
-		if (!getDateFromDatePicket(edatePicker).before(this.sdate)){
-	        this.edate = getDateFromDatePicket(edatePicker);
-	        addClaims(v);
-	        this.finish();
-		}else{
-			Toast.makeText(AddClaim.this,"End Date cannot come before start date. Please select another date", Toast.LENGTH_SHORT).show();
-		}
-	}
-	
-
-	//just a format string maker.
-	private String format(String string, String added) {
-		String formats = string +" "+ added; 
-		return formats;
-	}
-	
-	//Get Date from DatePicker as a date;
-	public static java.util.Date getDateFromDatePicket(DatePicker datePicker){
-	    int day = datePicker.getDayOfMonth();
-	    int month = datePicker.getMonth();
-	    int year =  datePicker.getYear();
-
-	    Calendar calendar = Calendar.getInstance();
-	    calendar.set(year, month, day);
-	    return calendar.getTime();
-	}
-	
-	public void editComplete(View v){
-		
-	}
-	*/
-	//THIS IS THE PERSISTANCE AS DONE IN THE LAB> NOT SURE WHY IT IS NOT WORKING> I WILL LOOK AT IT LATER> 
-	
-   //Create persistent data file for arrays of expenses and lists
-/*	private void saveInFile(Claim claim) {
+	/*	private void saveInFile(Claim claim) {
 		Gson gson = new Gson();
 		try {
 			FileOutputStream fos = openFileOutput(SAVEFILE,

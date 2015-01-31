@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -66,7 +67,9 @@ public class NewClaim extends Activity {
 		if (!getDateFromDatePicket(edatePicker).before(this.sdate)){
 	        this.edate = getDateFromDatePicket(edatePicker);
 	        addClaims(v);
-	        this.finish();
+			Intent intent = new Intent(this, AddClaim.class);
+			startActivity(intent);
+			finish();
 		}else{
 			Toast.makeText(this,"End Date cannot come before start date. Please select another date", Toast.LENGTH_SHORT).show();
 		}
