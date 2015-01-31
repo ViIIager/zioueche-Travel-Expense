@@ -8,6 +8,7 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -25,26 +26,27 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ExpenseDetails extends Activity {
 	static int position;
-	
+	ListView expView;
 	protected void onCreate(Bundle SavedInstanceState){
 		
 		super.onCreate(SavedInstanceState);
 		setContentView(R.layout.add_expense);
 		ClaimListController ct = new ClaimListController();
+		expView = (ListView) findViewById(R.id.ExpenseListView);
 		
 		//ExpenseList Adaptor for the Listview.
 		Collection<Claim> coll = ClaimListController.getClaimList().getClaim();
 		final ArrayList<Claim> list = new ArrayList<Claim>(coll);
 		int finalPosition = getIntent().getIntExtra("claimpos",0);
 		this.position = finalPosition;
-		ListView expView = (ListView) findViewById(R.id.ExpenseListView);
+		//ListView expView = (ListView) findViewById(R.id.ExpenseListView);
 		Collection<Expense> expenses = list.get(finalPosition).getExpenses();
 		final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
 		if (expense.size() > 1){
 			Collections.sort(expense, new CustomComparatorExpense());
 		}
-		final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(ExpenseDetails.this, android.R.layout.simple_list_item_1, expense);
-		expView.setAdapter(expAdap);
+		final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list.get(finalPosition).getExpenses());
+	    expView.setAdapter(expAdap);
 		expAdap.notifyDataSetChanged();
 		
 		

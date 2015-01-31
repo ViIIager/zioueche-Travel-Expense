@@ -44,7 +44,7 @@ import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends ListActivity {
-	private static final String SAVEFILE = "file.sav";
+	//private static final String SAVEFILE = "file.sav";
 	String name;
 	Date sdate;
 	Date edate;
@@ -173,6 +173,11 @@ public class AddClaim extends ListActivity {
 		            		  AddClaim.this.finish();
 		            	  }
 		              }
+		              if (item.getTitle().equals("Email Claim")){
+		            	  Intent email = new Intent(AddClaim.this, EmailClaimInfo.class);
+		            	  email.putExtra("emailPos", finalPosition);
+		            	  startActivity(email);
+		              }
 				            	  
 		              return true;  
 		            }  
@@ -210,29 +215,6 @@ public class AddClaim extends ListActivity {
 		return true;
 	}
 
-	/*protected void onDeleteClick(final int position, final ArrayList<Claim> list){
-		AlertDialog.Builder adb = new AlertDialog.Builder(AddClaim.this);
-		adb.setMessage("Delete "+ list.get(position).toString()+"?");
-		adb.setCancelable(true);
-		
-		adb.setPositiveButton("Delete",new OnClickListener(){
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				Claim claim = list.get(position);
-				ClaimListController.getClaimList().deleteClaim(claim);
-			}
-			
-		});
-		adb.setNegativeButton("Cancel",new OnClickListener(){
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {						
-			}
-			
-		});
-		adb.show();*/
-	//}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();

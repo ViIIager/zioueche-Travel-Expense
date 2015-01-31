@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:gravity="top" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/addClaim"
+        android:id="@+id/get_sdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/edate_picker"
+        android:layout_below="@+id/sdate_picker"
         android:onClick="getEDate"
-        android:text="Add Claim" />
+        android:text="Next Step" />
 
     <DatePicker
         android:id="@+id/edate_picker"
@@ -21,9 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="60dp"
-        android:datePickerMode="spinner"
-        android:yearListItemTextAppearance="@style/AppBaseTheme" />
+        android:layout_marginTop="60dp" />
 
     <TextView
         android:id="@+id/textView1"
@@ -35,4 +32,4 @@
         android:text="Select End Date"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
- </RelativeLayout>
+</RelativeLayout>
