@@ -26,7 +26,7 @@ public class DetailView extends Activity {
 	  	  TextView currview = (TextView) findViewById(R.id.currency);
 	  	  TextView priceview = (TextView) findViewById(R.id.price_cost);
 	  	  dateview.setText(to_use);
-	  	  int price = workwith.getPrice();
+	  	  float price = workwith.getPrice();
 	  	  priceview.setText(price+"");
 	  	  String curr = workwith.getCurrency();
 	  	  currview.setText(curr);

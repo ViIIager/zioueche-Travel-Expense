@@ -25,7 +25,7 @@ import android.widget.Toast;
 public class ExpenseAdd extends Activity{
 	private String name;
 	private Date date;
-	private int price;
+	private float price;
 	private static String currency;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,7 @@ public class ExpenseAdd extends Activity{
 	
 	public void getEPrice(View v){
 		EditText expname = (EditText) findViewById(R.id.price_field);
-		int price = Integer.parseInt( expname.getText().toString() );
+		float price = Float.parseFloat( expname.getText().toString() );
 		if (!TextUtils.isEmpty(expname.getText().toString())){
 			this.price = price;
 		getECurrency(v);

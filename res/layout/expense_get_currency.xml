@@ -11,7 +11,7 @@
         android:layout_x="53dp"
         android:layout_y="69dp"
         android:ems="10"
-        android:inputType="number" >
+        android:inputType="numberSigned|numberDecimal" >
 
         <requestFocus />
     </EditText>

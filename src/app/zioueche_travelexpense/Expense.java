@@ -6,13 +6,13 @@ public class Expense {
 	private String expname;
 	private String expcurrency;
 	private Date expdate;
-	private int expprice;
+	private float expprice;
 
-	public Expense(String expname,Date expdate, String expcurrency, int expprice){
+	public Expense(String expname,Date expdate, String expcurrency, float price){
 		this.expname = expname;
 		this.expdate = expdate;
 		this.expcurrency = expcurrency;
-		this.expprice = expprice;
+		this.expprice = price;
 	}
 	
 	public String getName(){
@@ -27,7 +27,7 @@ public class Expense {
 		return this.expdate;
 	}
 	
-	public int getPrice(){
+	public float getPrice(){
 		return this.expprice;
 	}
 	

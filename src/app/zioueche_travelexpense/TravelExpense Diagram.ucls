@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="app.zioueche_travelexpense.CustomComparatorExpense" 
+    project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/CustomComparatorExpense.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="306" y="1395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="app.zioueche_travelexpense.Expense" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/Expense.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1088" y="2788"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="app.zioueche_travelexpense.GetDetails" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/GetDetails.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2334" y="1476"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="app.zioueche_travelexpense.NewClaim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/NewClaim.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1999" y="654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="app.zioueche_travelexpense.DeleteExpense" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/DeleteExpense.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="852" y="883"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="app.zioueche_travelexpense.AddClaim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/AddClaim.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1753" y="964"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="app.zioueche_travelexpense.EmptyClaimException" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/EmptyClaimException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1020" y="564"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="app.zioueche_travelexpense.ExpenseDetails" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ExpenseDetails.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="900" y="1220"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="app.zioueche_travelexpense.ExpenseAdd" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ExpenseAdd.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="977" y="1485"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="app.zioueche_travelexpense.ChangeStatus" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ChangeStatus.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1477" y="1417"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="app.zioueche_travelexpense.EditClaim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/EditClaim.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2123" y="1404"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="app.zioueche_travelexpense.DeleteClaim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/DeleteClaim.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1686" y="1404"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="app.zioueche_travelexpense.CustomAdapterExpense" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/CustomAdapterExpense.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="612" y="1395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="app.zioueche_travelexpense.ClaimsList" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ClaimsList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1823" y="2042"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="app.zioueche_travelexpense.CustomAdapterClaim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/CustomAdapterClaim.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1232" y="1184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="app.zioueche_travelexpense.EmailClaimInfo" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/EmailClaimInfo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1923" y="1431"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="app.zioueche_travelexpense.ClaimListManager" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ClaimListManager.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1534" y="1768"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="app.zioueche_travelexpense.Claim" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/Claim.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1523" y="2415"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="19" language="java" name="app.zioueche_travelexpense.Listener" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/Listener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2412" y="2253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="20" language="java" name="app.zioueche_travelexpense.DetailView" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/DetailView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1195" y="1395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="app.zioueche_travelexpense.CustomComparatorClaim" 
+    project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/CustomComparatorClaim.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1512" y="1184"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="app.zioueche_travelexpense.ClaimListController" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/ClaimListController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1838" y="1732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="app.zioueche_travelexpense.MainActivity" project="zioueche-TravelExpense" 
+    file="/zioueche-TravelExpense/src/app/zioueche_travelexpense/MainActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="913" y="1723"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="24">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="25" name="expenseList"/>      
+      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="27">    
+    <bendpoint x="1692" y="1665"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="28">    
+    <bendpoint x="1804" y="1135"/>    
+    <bendpoint x="1804" y="1346"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="30">    
+    <bendpoint x="2041" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="31">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="32" name="claimList"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="36">    
+    <bendpoint x="1292" y="1346"/>    
+    <bendpoint x="1271" y="1665"/>    
+    <bendpoint x="1271" y="1912"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="37" name="objects"/>      
+      <multiplicity id="38" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="39">    
+    <bendpoint x="1010" y="1665"/>    
+    <bendpoint x="1010" y="1912"/>    
+    <bendpoint x="1010" y="2213"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="41">    
+    <bendpoint x="2020" y="1135"/>    
+    <bendpoint x="2020" y="1346"/>    
+    <bendpoint x="1963" y="1665"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="42">    
+    <bendpoint x="2244" y="1665"/>    
+    <bendpoint x="2244" y="1912"/>    
+    <bendpoint x="2244" y="2213"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="43">    
+    <bendpoint x="1951" y="1912"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="44">    
+    <bendpoint x="1250" y="1665"/>    
+    <bendpoint x="1250" y="1912"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="45">    
+    <bendpoint x="2026" y="1665"/>    
+    <bendpoint x="2026" y="1912"/>    
+    <bendpoint x="2026" y="2213"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="46">    
+    <bendpoint x="1734" y="1665"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="47">    
+    <bendpoint x="2005" y="1665"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="49">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="50" name="listeners"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="52">    
+    <bendpoint x="1898" y="834"/>    
+    <bendpoint x="1862" y="1135"/>    
+    <bendpoint x="1825" y="1346"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="53">    
+    <bendpoint x="1713" y="1665"/>    
+    <bendpoint x="1694" y="1912"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="54">    
+    <bendpoint x="1376" y="1346"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="56">    
+    <bendpoint x="1066" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="57">    
+    <bendpoint x="429" y="1135"/>    
+    <bendpoint x="429" y="1346"/>    
+    <bendpoint x="652" y="1665"/>    
+    <bendpoint x="815" y="1912"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="58">    
+    <bendpoint x="2464" y="834"/>    
+    <bendpoint x="2464" y="1135"/>    
+    <bendpoint x="2464" y="1346"/>    
+    <bendpoint x="2223" y="1665"/>    
+    <bendpoint x="2202" y="1912"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="59" name="claim"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="62">    
+    <bendpoint x="815" y="1346"/>    
+    <bendpoint x="815" y="1665"/>    
+    <bendpoint x="1031" y="1912"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="65">    
+    <bendpoint x="183" y="1135"/>    
+    <bendpoint x="183" y="1346"/>    
+    <bendpoint x="183" y="1665"/>    
+    <bendpoint x="183" y="1912"/>    
+    <bendpoint x="183" y="2213"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="66">    
+    <bendpoint x="1397" y="1135"/>    
+    <bendpoint x="1397" y="1346"/>    
+    <bendpoint x="1671" y="1665"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="68">    
+    <bendpoint x="1647" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="69">    
+    <bendpoint x="2181" y="1665"/>    
+    <bendpoint x="2223" y="1912"/>    
+    <bendpoint x="2223" y="2213"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="71">    
+    <bendpoint x="1101" y="1665"/>    
+    <bendpoint x="1101" y="1912"/>    
+    <bendpoint x="1101" y="2213"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="72">    
+    <bendpoint x="2062" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="73">    
+    <bendpoint x="836" y="1346"/>    
+    <bendpoint x="1045" y="1135"/>    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="75">    
+    <bendpoint x="610" y="1665"/>    
+    <bendpoint x="610" y="1912"/>    
+    <bendpoint x="610" y="2213"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="76">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="77" name="claimList"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="79">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="80">    
+    <bendpoint x="2443" y="1135"/>    
+    <bendpoint x="2485" y="1346"/>    
+    <bendpoint x="2485" y="1665"/>    
+    <bendpoint x="2485" y="1912"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="81">    
+    <bendpoint x="1762" y="1135"/>    
+    <bendpoint x="1783" y="1346"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="82">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="83">    
+    <bendpoint x="1313" y="1346"/>    
+    <bendpoint x="1376" y="1665"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="84">    
+    <bendpoint x="1334" y="1665"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="85">    
+    <bendpoint x="1334" y="1346"/>    
+    <bendpoint x="1313" y="1665"/>    
+    <bendpoint x="1313" y="1912"/>    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="86">    
+    <bendpoint x="631" y="1665"/>    
+    <bendpoint x="631" y="1912"/>    
+    <bendpoint x="631" y="2213"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="87" name="objects"/>      
+      <multiplicity id="88" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="89">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="90">    
+    <bendpoint x="1626" y="1135"/>    
+    <bendpoint x="1355" y="1346"/>    
+    <bendpoint x="1355" y="1665"/>    
+    <bendpoint x="1355" y="1912"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="91" name="claim"/>      
+      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="93">    
+    <bendpoint x="2202" y="1665"/>    
+    <bendpoint x="2181" y="1912"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="94">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="95">    
+    <bendpoint x="1397" y="1665"/>    
+    <bendpoint x="1397" y="1912"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="96">    
+    <bendpoint x="1942" y="1665"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="97">    
+    <bendpoint x="1292" y="1665"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="98">    
+    <bendpoint x="1080" y="1665"/>    
+    <bendpoint x="1122" y="1912"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="99">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="100">    
+    <bendpoint x="1825" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="101">    
+    <bendpoint x="2068" y="1665"/>    
+    <bendpoint x="2068" y="1912"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="102">    
+    <bendpoint x="1783" y="1135"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="103">    
+    <bendpoint x="794" y="1346"/>    
+    <bendpoint x="794" y="1665"/>    
+    <bendpoint x="794" y="1912"/>    
+    <bendpoint x="794" y="2213"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="104">    
+    <bendpoint x="1984" y="1665"/>    
+    <bendpoint x="1984" y="1912"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="105">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="106">    
+    <bendpoint x="2047" y="1665"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
