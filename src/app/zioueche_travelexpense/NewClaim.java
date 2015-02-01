@@ -26,15 +26,11 @@ public class NewClaim extends Activity {
 		setContentView(R.layout.claim_add_page);
 	}
 	
-	
-	
 	public void addClaims(View v){
 		ClaimListController ct = new ClaimListController();	
 		Claim addClaim = new Claim(name, sdate, edate);
 		ct.addClaim(addClaim);
-	//saveInFile(addClaim); // Get Persistence to work for this
-		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
-		
+		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();	
 	}
 	
 	public void getClaimName(View v){

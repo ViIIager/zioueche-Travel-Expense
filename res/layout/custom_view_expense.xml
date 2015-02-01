@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
- <!-- TAKEN AND MODIFIED FROM: https://devtut.wordpress.com/2011/06/09/custom-arrayadapter-for-a-listview-android/ ON 2015/JAN/28-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
 
     android:padding="6dip">
-    
     <!-- Item Name -->
    <TextView
 		android:id="@+id/toptext"
@@ -37,7 +34,7 @@
 		android:ellipsize="marquee"
    />
 
-   <!-- Date Tag -->
+   <!-- Price Tag -->
    <TextView
 	 	android:id="@+id/middletext"
 
@@ -51,7 +48,7 @@
 	 	android:gravity="center_vertical"
    	/>
 
-   	       <!-- Actual Date Data -->
+   	       <!-- Actual Price Data -->
    <TextView
 		android:id="@+id/middletextdata"
 
@@ -65,7 +62,7 @@
 		android:gravity="center_vertical"
    />
 
-   	<!-- Status Tag -->
+   	<!-- Description Tag -->
    <TextView
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -77,14 +74,16 @@
 		android:id="@+id/bottomtext"
 		android:singleLine="false"
    />
-   <!-- This is the actual Status -->
+   <!-- This is the actual description -->
       <TextView
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 
 		android:layout_alignParentRight="true"
 		android:layout_alignParentBottom="true"
-		android:layout_toRightOf="@id/toptext"
+		android:layout_below="@id/bottomtext"
+
+
 		android:id="@+id/desctext"
 		android:singleLine="false"
    />

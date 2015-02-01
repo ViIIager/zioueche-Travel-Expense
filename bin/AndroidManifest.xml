@@ -53,6 +53,13 @@
           <activity
             android:name=".EmailClaimInfo">
          </activity>
+         <activity
+            android:name=".DetailView">
+         </activity>
+         
+         <activity 
+             android:name=".DeleteExpense">
+         </activity>
     </application>
 
 </manifest>

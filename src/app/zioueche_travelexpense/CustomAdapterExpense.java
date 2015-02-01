@@ -51,8 +51,8 @@ public class CustomAdapterExpense extends ArrayAdapter<Expense> {
 			TextView ttd = (TextView) v.findViewById(R.id.toptextdata);
 			TextView mt = (TextView) v.findViewById(R.id.middletext);
 			TextView mtd = (TextView) v.findViewById(R.id.middletextdata);
-			TextView bt = (TextView) v.findViewById(R.id.bottomtext);
-			TextView btd = (TextView) v.findViewById(R.id.desctext);
+			//TextView bt = (TextView) v.findViewById(R.id.bottomtext);
+			//TextView btd = (TextView) v.findViewById(R.id.desctext);
 
 			// check to see if each individual textview is null.
 			// if not, assign some text!
@@ -68,12 +68,12 @@ public class CustomAdapterExpense extends ArrayAdapter<Expense> {
 			if (mtd != null){
 				mtd.setText("" + DateFormat.getDateInstance().format(i.getCDate()));
 			}
-			if (bt != null){
-				bt.setText("Currency: ");
-			}
-			if (btd != null){
-				btd.setText(""+i.getPrice()+" "+i.getCurrency());
-			}
+			//if (bt != null){
+			//	bt.setText("Currency: ");
+			//}
+			//if (btd != null){
+			//	btd.setText("     "+i.getPrice()+" "+i.getCurrency());
+			//}
 		}
 
 		// the view must be returned to our activity

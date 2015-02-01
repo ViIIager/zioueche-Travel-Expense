@@ -30,9 +30,11 @@ public class ClaimsList implements Serializable{
 		return claimList;
 	}
 	
-	public void addClaim(Claim string){
-		claimList.add(string);
+	public void addClaim(Claim claim){
+		claimList.add(claim);
 		notifyListeners();
+		AddClaim cla = new AddClaim();
+		//cla.saveInFile(claim);
 	}
 	
 	public void setClaimList(ArrayList<Claim> clist){

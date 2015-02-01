@@ -51,6 +51,7 @@ public class Claim implements Serializable{
 	public void deleteExpense(int position){
 		expenseList.remove(position);
 	}
+	
 	//change the name to a string.
 	public String toString(){
 		return getName();

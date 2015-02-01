@@ -22,9 +22,10 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
-public class ExpenseDetails extends Activity {
+public class ExpenseDetails extends ListActivity {
 	static int position;
 	ListView expView;
 	protected void onCreate(Bundle SavedInstanceState){
@@ -32,7 +33,7 @@ public class ExpenseDetails extends Activity {
 		super.onCreate(SavedInstanceState);
 		setContentView(R.layout.add_expense);
 		ClaimListController ct = new ClaimListController();
-		expView = (ListView) findViewById(R.id.ExpenseListView);
+		expView = (ListView) findViewById(android.R.id.list);
 		
 		//ExpenseList Adaptor for the Listview.
 		Collection<Claim> coll = ClaimListController.getClaimList().getClaim();
@@ -45,10 +46,26 @@ public class ExpenseDetails extends Activity {
 		if (expense.size() > 1){
 			Collections.sort(expense, new CustomComparatorExpense());
 		}
-		final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list.get(finalPosition).getExpenses());
+		/*final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list.get(finalPosition).getExpenses());
+	    expView.setAdapter(expAdap);*/
+		//final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list.get(finalPosition).getExpenses());
+		final CustomAdapterExpense expAdap = new CustomAdapterExpense(this, R.layout.custom_view_expense, expense);
 	    expView.setAdapter(expAdap);
 		expAdap.notifyDataSetChanged();
+		//expAdap.notifyDataSetChanged();
 		
+		expView.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				int finalPosition = ExpenseDetails.position;
+				Toast.makeText(ExpenseDetails.this, "Clicked "+list.get(finalPosition), Toast.LENGTH_SHORT).show();
+				Intent det = new Intent(ExpenseDetails.this, DetailView.class);
+          	  	det.putExtra("pos", finalPosition);
+          	  	det.putExtra("epos", position);
+          	  	startActivity(det);
+			}
+		});
 		
 		expView.setOnItemLongClickListener(new OnItemLongClickListener(){
 			@Override
@@ -61,49 +78,21 @@ public class ExpenseDetails extends Activity {
 				popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {  
 		            public boolean onMenuItemClick(MenuItem item) {  
 		              if (item.getTitle().equals("Delete Expense")){
-		            	AlertDialog.Builder adb = new AlertDialog.Builder(ExpenseDetails.this);
-		  				adb.setMessage("Delete "+ list.get(finalPosition).getExpenses().get(expPosition)+"?");
-		  				adb.setCancelable(true);
-		  				adb.setPositiveButton("Delete",new OnClickListener(){
-		  					@Override
-		  					public void onClick(DialogInterface dialog, int which) {
-		  						ArrayList<Expense> expense = list.get(finalPosition).getExpenses();
-		  						Toast.makeText(ExpenseDetails.this, expense.get(expPosition)+" Deleted", Toast.LENGTH_SHORT).show();
-		  						expense.remove(expPosition);
-		  						expAdap.clear();
-		  						expAdap.addAll(expense);
-		  						expAdap.notifyDataSetChanged();
-		  					}
-		  					
-		  				});
-		  				adb.setNegativeButton("Cancel",new OnClickListener(){
-
-		  					@Override
-		  					public void onClick(DialogInterface dialog, int which) {						
-		  					}
-		  					
-		  				});
-		  				adb.show();
+		            	  Intent intent = new Intent(ExpenseDetails.this, DeleteExpense.class);
+		            	  intent.putExtra("exPos", expPosition);
+		            	  intent.putExtra("cPos", finalPosition);
+		            	  startActivity(intent);
+		            	  finish();
 		              }
 		              
-		            	  
-
-		              //Edit the claim we want.
+		              /*//Get the expense Details.  not sure if I need this.
 		              if (item.getTitle().equals("Get Expense Details")){
-		            	  setContentView(R.layout.expense_detail_view);
-		            	  Expense workwith = expense.get(expPosition);
-		            	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		            	  Date date = workwith.getCDate();
-		            	  String to_use = sdf.format(date );
-		            	  TextView dateview = (TextView) findViewById(R.id.expdate);
-		            	  TextView currview = (TextView) findViewById(R.id.currency);
-		            	  TextView priceview = (TextView) findViewById(R.id.price_cost);
-		            	  dateview.setText(to_use);
-		            	  int price = workwith.getPrice();
-		            	  priceview.setText(price+"");
-		            	  String curr = workwith.getCurrency();
-		            	  currview.setText(curr);
-		            	  }
+		            	  Intent det = new Intent(ExpenseDetails.this, DetailView.class);
+		            	  det.putExtra("pos", finalPosition);
+		            	  det.putExtra("epos", expPosition);
+		            	  startActivity(det);
+
+		            	  }*/
 		            	  //Toast.makeText(ExpenseDetails.this, "Editing Claim: "+ list.get(finalPosition), Toast.LENGTH_SHORT).show();
 		              return true;  
 		             }  

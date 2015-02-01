@@ -1,5 +1,6 @@
 package app.zioueche_travelexpense;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -44,7 +45,7 @@ import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends ListActivity {
-	//private static final String SAVEFILE = "file.sav";
+	public String SAVEFILE = "file.sav";
 	String name;
 	Date sdate;
 	Date edate;
@@ -205,15 +206,9 @@ public class AddClaim extends ListActivity {
 		this.claim = loadFromFile();
 		ClaimsList cl = new ClaimsList();
 		cl.setClaimList(this.claim);
-		ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, this.claim);
+		ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, R.layout.custom_view_claim, this.claim);
 		listView.setAdapter(claimAdapter);
 	}*/
-	/*
-	 * View methods below. required to run the code.
-	 * 
-	 */
-	
-
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -244,11 +239,10 @@ public class AddClaim extends ListActivity {
 		finish();
 	}
 	
-	/*	private void saveInFile(Claim claim) {
+/*	public void saveInFile(Claim claim) {
 		Gson gson = new Gson();
 		try {
-			FileOutputStream fos = openFileOutput(SAVEFILE,
-					0);
+			FileOutputStream fos = openFileOutput(SAVEFILE,0);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			gson.toJson(claim, osw);
 			osw.flush();
