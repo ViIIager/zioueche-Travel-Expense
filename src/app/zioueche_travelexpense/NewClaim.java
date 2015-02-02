@@ -35,7 +35,8 @@ public class NewClaim extends Activity {
 	public void addClaims(View v) throws IOException{
 		ClaimListController ct = new ClaimListController();	
 		ct.addClaim(claimadd);
-		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();	
+		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();
+		
 	}
 	
 	public void getClaimName(View v){

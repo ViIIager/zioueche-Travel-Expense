@@ -1,9 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="app.zioueche_travelexpense.AddClaim" >
-    <item android:id="@+id/addClaim" android:title="New Claim" android:onClick="addClaimView"></item>
-
-    <item android:id="@+id/CancelAction" android:title="Cancel"></item>
 
 
 </menu>
