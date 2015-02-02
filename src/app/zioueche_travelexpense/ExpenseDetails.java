@@ -29,6 +29,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
+
 public class ExpenseDetails extends ListActivity {
 	static int position;
 	ListView expView;
