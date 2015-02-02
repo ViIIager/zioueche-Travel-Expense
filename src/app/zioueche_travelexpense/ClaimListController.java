@@ -10,6 +10,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
+/* 
+ * 
+ *As Seen in Student Picker, this allows me to access the Claimslist without the use of a user interface. 
+ * 
+ */
+
 public class ClaimListController {
 	private static ClaimsList claimList = null;
 	

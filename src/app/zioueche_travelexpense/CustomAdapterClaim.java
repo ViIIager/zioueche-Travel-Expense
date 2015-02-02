@@ -29,6 +29,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+/* 
+ * 
+ *This code has been cited from the source. I found this code while looking for a custom way to display information on the listview. 
+ * 
+ */
+
+
 //taken and modified from https://devtut.wordpress.com/2011/06/09/custom-arrayadapter-for-a-listview-android/ JAN/ 13/2015
 public class CustomAdapterClaim extends ArrayAdapter<Claim> {
 

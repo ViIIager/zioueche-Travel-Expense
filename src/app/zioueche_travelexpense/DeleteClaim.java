@@ -15,6 +15,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+//Simple activity to delete a claim. reason for the activity is so that I can refresh the listview on restrt without having to 
+//call a maze of listeners.
 public class DeleteClaim extends Activity {
 	int finalPosition;
 	protected void onCreate(Bundle SavedInstanceState){

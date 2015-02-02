@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+//takes the claim and expense information and allows me to email it to whoever I want.
 public class EmailClaimInfo extends Activity {
 	private String message = "";
 	private String email_to;

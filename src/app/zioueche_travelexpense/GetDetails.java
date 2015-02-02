@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//Gets the use the details for the claim, includind start and end dates, as well as total currency spent.
+
 public class GetDetails extends Activity {
 	static int usd;
 	static int cad;

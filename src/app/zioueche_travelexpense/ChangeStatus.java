@@ -1,5 +1,13 @@
 package app.zioueche_travelexpense;
 
+/* 
+ * 
+ *Simple activity to change the status of a claim.  once a status is set to approved or Sumbitted, we can no longer edit it. 
+ * 
+ */
+
+
+
 import java.util.ArrayList;
 import java.util.Collection;
 

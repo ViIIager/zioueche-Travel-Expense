@@ -6,6 +6,14 @@ you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0*/
 
+/* 
+ * 
+ *This Class is for keepting all the Claims togeher, as well as making any modifications to the claims or expenses.  I tried
+ *implimenting the data persistance here. 
+ * 
+ */
+
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

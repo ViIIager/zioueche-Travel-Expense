@@ -18,7 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
+//simple activity to add a claim.
 public class NewClaim extends Activity {
 	String name;
 	Date sdate;

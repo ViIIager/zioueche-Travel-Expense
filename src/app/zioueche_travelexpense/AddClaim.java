@@ -55,8 +55,18 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+/*
+ * 
+ * This is almost the main class of the app. it is where the claims are shown, and where all the actins are taken.D
+ * is an issue. I was not able to implement it. However, all other features are working fine.
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 
-//figure out how to add claim in different page.  so we can add date range.
+
 public class AddClaim extends ListActivity {
 	Context ctx;
 	String filePath ="fileName.txt";

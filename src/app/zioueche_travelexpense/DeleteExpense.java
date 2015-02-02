@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+//simple class activity that allows me to delete expenses
 public class DeleteExpense extends Activity {
  protected void onCreate(Bundle savedInstanceState){
 	 super.onCreate(savedInstanceState);

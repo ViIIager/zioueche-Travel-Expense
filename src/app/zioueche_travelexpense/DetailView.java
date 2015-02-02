@@ -12,6 +12,7 @@ import java.util.Date;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+//Shows detailed view of the Expenses inside a claim.
 
 public class DetailView extends Activity {
 	protected void onCreate(Bundle savedInstanceState){

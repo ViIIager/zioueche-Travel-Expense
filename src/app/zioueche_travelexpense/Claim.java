@@ -8,6 +8,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 
+/* 
+ * 
+ *This is the MAIN OBJECT of the app. this is the claim that has the defining attributes of the app. it has name, start and 
+ *end dates, as well as its own claim of expenses. 
+ * 
+ */
+
+
 public class Claim implements Serializable{
 	/**
 	 * Student serialized ID

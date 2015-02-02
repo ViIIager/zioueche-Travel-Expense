@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
-
+//just a main menu, only one button. did not want to start the app witha  list view as it seemed a bit overwhelming
 public class MainActivity extends Activity {
 	public String SAVEFILE = "file.sav";
 	ArrayList<Claim> claim;

@@ -6,6 +6,7 @@ You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0*/
 import java.util.Comparator;
 
+//allows me to compare the expenses however I want.
 public class CustomComparatorExpense implements Comparator<Expense> {
     @Override
     public int compare(Expense e1, Expense e2) {

@@ -6,6 +6,8 @@ You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0*/
 import java.util.Date;
 
+//Second most important class in the app. this contains all the information for each expense. this is the EXPENSE CLASS
+
 public class Expense {
 	private String expname;
 	private String expcurrency;

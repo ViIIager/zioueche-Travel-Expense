@@ -6,6 +6,7 @@ You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0*/
 import java.util.Comparator;
 
+//Allows me to stort the list of Claims however I want
 public class CustomComparatorClaim implements Comparator<Claim> {
     @Override
     public int compare(Claim c1, Claim c2) {

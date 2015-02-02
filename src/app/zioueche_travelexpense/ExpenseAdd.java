@@ -26,6 +26,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+//Activity that allows me to view and add expenses to a particular claim.
+
 public class ExpenseAdd extends Activity{
 	private String name;
 	private Date date;
