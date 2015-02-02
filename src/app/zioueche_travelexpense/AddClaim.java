@@ -26,9 +26,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -69,7 +66,7 @@ import android.widget.Toast;
 
 public class AddClaim extends ListActivity {
 	Context ctx;
-	String filePath ="fileName.txt";
+	File filePath = new File("fileName.sav");
 	String name;
 	Date sdate;
 	Date edate;
@@ -255,10 +252,16 @@ public class AddClaim extends ListActivity {
 		finish();
 	}
 	
-/*	@Override
+	/*@Override
 	protected void onStart(){
 		super.onStart();
-		//ClaimListController.getClaimList().deSerealize();
+		claim = ClaimListController.getClaimList().loadFromFile();
+		//ClaimListController.getClaimList().deserialize();
+		
+		ClaimListController.getClaimList();
+		if (ClaimsList.claimList==null){
+			claim = new ArrayList<Claim>();
+		}
 		Toast.makeText(this, claim.size()+"", Toast.LENGTH_SHORT).show();
 		claimAdapter = new CustomAdapterClaim(this,
 				R.layout.custom_view_claim, claim);

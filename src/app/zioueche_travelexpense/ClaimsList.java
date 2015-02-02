@@ -6,6 +6,7 @@ you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0*/
 
+<<<<<<< HEAD
 /* 
  * 
  *This Class is for keepting all the Claims togeher, as well as making any modifications to the claims or expenses.  I tried
@@ -14,15 +15,20 @@ http://www.apache.org/licenses/LICENSE-2.0*/
  */
 
 
+=======
+import java.io.File;
+>>>>>>> 71629b4ee02516c67db3c3ab724f479b70ddb0a2
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -32,6 +38,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -41,10 +48,17 @@ import android.text.InputFilter.LengthFilter;
 import android.util.Log;
 import android.widget.Toast;
 
+/* I have added the code for persistence, but for some reason I keep getting a null pointer exception.  I cannot figure out what it is
+ * but I a starting to think it is the file not being initialized.  all other features work though. see commented out code
+ * for saveInFile and LoadFromFile in this class and the commented out ON CREATE method in the ADDCLAIM class.
+ */
 public class ClaimsList implements Serializable{
-	String filePath ="fileName.txt";
 	Context ctx;
 	
+	//private static final String FILENAME = "file.sav";
+	//File file = new File(ctx.getFilesDir(), FILENAME);
+	//FileOutputStream outputStream;
+
 	/**
 	 * Claim List Serialization ID
 	 */
@@ -63,27 +77,70 @@ public class ClaimsList implements Serializable{
 		return claimList;
 	}
 	
-	public String getFile(){
-		return filePath;
-	}
-	public void addClaim(Claim claim){
+	public void addClaim(Claim claim) throws FileNotFoundException{
 		//List<Claim> claimsList= new ArrayList<Claim>();
 		if (claimList == null){
 			claimList = new ArrayList<Claim>();
 		}
 		claimList.add(claim);
-		//saveInFile(claimList);
+		//Gson gson = new Gson();
+		//gson.toJson(claim);
+		//outputStream = ctx.openFileOutput(FILENAME, Context.MODE_PRIVATE);
+
+		//saveInFile();
 		notifyListeners();
     }
+	
+/*	private void saveInFile() {
+		Gson gson = new Gson();
+		try {
+		FileOutputStream fos = this.ctx.openFileOutput(FILENAME,
+		0);
+		OutputStreamWriter osw = new OutputStreamWriter(fos);
+		gson.toJson(claimList, osw);
+		osw.flush();
+		fos.close();
+		} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		}
+	
+	public ArrayList<Claim> loadFromFile() {
+		Gson gson = new Gson();
+		ArrayList<Claim> tweets = new ArrayList<Claim>();
+		try {
+		FileInputStream fis = ctx.openFileInput(FILENAME);
+		//Based on http://google.gson.googlecode.com/svn/trunk/gson/dos/javadoc/com/google/gson/Gson.html
+		Type listType = new TypeToken<ArrayList<Claim>>(){}.getType();
+		InputStreamReader isr = new InputStreamReader(fis);
+		tweets = gson.fromJson(isr, listType);
+		fis.close();
+		} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		if (tweets == null){
+		tweets = new ArrayList<Claim>();
+		}
+		return tweets;
+		}*/
 	
 	public void setClaimList(ArrayList<Claim> clist){
 		if (clist == null){
 			claimList = new ArrayList<Claim>();
 		}else{
-		this.claimList = clist;
+		claimList = clist;
+		}
 		}
 		
-	}
+
 	 
 	public void addClaimAt(int position, Claim string){
 		claimList.add(position, string);
@@ -113,46 +170,4 @@ public class ClaimsList implements Serializable{
 		listeners.remove(l);
 		
 	}
-	
-/*	public void saveInFile(ArrayList<Claim> claim) {
-		ObjectOutputStream os;
-		try {
-			os = new ObjectOutputStream(new FileOutputStream(filePath));
-			os.writeObject(claimList);
-			os.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void deSerealize(){
-		try {
-			ObjectInputStream is = new ObjectInputStream(new FileInputStream(filePath));
-			ArrayList<Claim> claim = (ArrayList<Claim>) is.readObject();
-			is.close();
-			if (claim == null){
-				claim = new ArrayList<Claim>();
-			}
-			//Toast.makeText(ClaimsList.this, claim.size()+"", Toast.LENGTH_SHORT).show();
-			claimList = claim;
-		} catch (StreamCorruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		
-	}*/
 }

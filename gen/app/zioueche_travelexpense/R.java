@@ -26,18 +26,16 @@ public final class R {
     }
     public static final class id {
         public static final int AbsoluteLayout1=0x7f080004;
-        public static final int AddExpense=0x7f080049;
-        public static final int CancelAction=0x7f080044;
-        public static final int DeleteItem=0x7f08004d;
+        public static final int AddExpense=0x7f080047;
+        public static final int DeleteItem=0x7f08004b;
         public static final int RelativeLayout1=0x7f080003;
         public static final int SendButton=0x7f08002b;
         public static final int Title=0x7f080000;
-        public static final int action_settings=0x7f080045;
-        public static final int addClaim=0x7f080043;
+        public static final int action_settings=0x7f080043;
         public static final int add_button=0x7f080002;
         public static final int add_claim_button=0x7f080001;
         public static final int add_claim_field=0x7f08000f;
-        public static final int add_exp=0x7f080046;
+        public static final int add_exp=0x7f080044;
         public static final int approved=0x7f080009;
         public static final int aud=0x7f08003d;
         public static final int aud_tot=0x7f080018;
@@ -48,15 +46,15 @@ public final class R {
         public static final int currency_used=0x7f080033;
         public static final int datePicker1=0x7f08002e;
         public static final int date_view=0x7f080036;
-        public static final int delete=0x7f080047;
+        public static final int delete=0x7f080045;
         public static final int desctext=0x7f080015;
         public static final int done_butt=0x7f080042;
         public static final int edate=0x7f080023;
         public static final int edate_picker=0x7f08000e;
         public static final int editText1=0x7f080040;
         public static final int editTextMessage=0x7f08002a;
-        public static final int edit_claim=0x7f080048;
-        public static final int email_claim=0x7f08004b;
+        public static final int edit_claim=0x7f080046;
+        public static final int email_claim=0x7f080049;
         public static final int eur=0x7f08003e;
         public static final int eur_tot=0x7f080019;
         public static final int exp_picker=0x7f08002f;
@@ -64,7 +62,7 @@ public final class R {
         public static final int expense_add_button=0x7f08002c;
         public static final int gbp=0x7f08003f;
         public static final int gbp_tot=0x7f08001a;
-        public static final int get_detail=0x7f08004a;
+        public static final int get_detail=0x7f080048;
         public static final int get_sdate=0x7f08000c;
         public static final int inprogress=0x7f080008;
         public static final int linearLayout1=0x7f080024;
@@ -85,7 +83,7 @@ public final class R {
         public static final int sdate_picker=0x7f08000d;
         public static final int set_status=0x7f080005;
         public static final int statusChange=0x7f080007;
-        public static final int status_change=0x7f08004c;
+        public static final int status_change=0x7f08004a;
         public static final int subject=0x7f080028;
         public static final int submitted=0x7f08000b;
         public static final int textView1=0x7f080006;
