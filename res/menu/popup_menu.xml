@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     
-    <item android:id="@+id/AddExpense" android:title="Add Expense"></item>
-    <item android:id="@+id/get_detail" android:title="Get Claim Details"></item>
+    <item android:id="@+id/edit_claim" android:title="Edit Claim"></item><item android:id="@+id/AddExpense" android:title="Add Expense"></item>
+    <item android:id="@+id/get_detail" android:title="Get Claim Details"></item><item android:id="@+id/email_claim" android:title="Email Claim"></item>
     
-    <item android:id="@+id/edit_claim" android:title="Edit Claim"></item><item android:id="@+id/DeleteItem" android:title="Delete"></item>
+    
     <item android:id="@+id/status_change" android:title="Change Claim Status"></item>
-    <item android:id="@+id/email_claim" android:title="Email Claim"></item>
+    <item android:id="@+id/DeleteItem" android:title="Delete"></item>
 </menu>

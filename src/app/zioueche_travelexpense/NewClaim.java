@@ -1,5 +1,10 @@
 package app.zioueche_travelexpense;
-
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,16 +25,16 @@ public class NewClaim extends Activity {
 	Date edate;
 	ArrayList<Claim> claim;
 	ListView listView;
+	Claim claimadd;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.claim_add_page);
 	}
 	
-	public void addClaims(View v){
+	public void addClaims(View v) throws IOException{
 		ClaimListController ct = new ClaimListController();	
-		Claim addClaim = new Claim(name, sdate, edate);
-		ct.addClaim(addClaim);
+		ct.addClaim(claimadd);
 		Toast.makeText(this,"Added "+name, Toast.LENGTH_SHORT).show();	
 	}
 	
@@ -58,10 +63,11 @@ public class NewClaim extends Activity {
         setContentView(R.layout.claim_add_edate);
 	}
 	
-	public void getEDate(View v){
+	public void getEDate(View v) throws IOException{
 		DatePicker edatePicker = (DatePicker)findViewById(R.id.edate_picker);
 		if (!getDateFromDatePicket(edatePicker).before(this.sdate)){
 	        this.edate = getDateFromDatePicket(edatePicker);
+	        claimadd = new Claim(name, sdate, edate);
 	        addClaims(v);
 			Intent intent = new Intent(this, AddClaim.class);
 			startActivity(intent);

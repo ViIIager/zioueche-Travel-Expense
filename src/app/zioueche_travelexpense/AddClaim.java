@@ -1,12 +1,21 @@
 package app.zioueche_travelexpense;
 
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
+import java.io.StreamCorruptedException;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +24,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,9 +33,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -45,20 +58,26 @@ import android.widget.Toast;
 
 //figure out how to add claim in different page.  so we can add date range.
 public class AddClaim extends ListActivity {
-	public String SAVEFILE = "file.sav";
+	Context ctx;
+	String filePath ="fileName.txt";
 	String name;
 	Date sdate;
 	Date edate;
+	CustomAdapterClaim claimAdapter;
 	ArrayList<Claim> claim;
 	ListView listView;
+	//SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+    //SharedPreferences.Editor ed = mPrefs.edit();
+    //ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
+	//private CustomAdapterClaim claimAdapter;
 	//ArrayList<Claim> claim = (ArrayList<Claim>) ClaimListController.getClaimList().getClaim();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_claim);
-
 		//adapter for claim view
+		
 		listView = (ListView) findViewById(android.R.id.list);
 		
 		Collection<Claim> claims = ClaimListController.getClaimList().getClaim();
@@ -109,9 +128,9 @@ public class AddClaim extends ListActivity {
 		            		}else{
 		            		  Intent delete = new Intent(AddClaim.this, DeleteClaim.class);
 		            		  delete.putExtra("pospos", finalPosition);
-		            		  Toast.makeText(AddClaim.this, ""+finalPosition, Toast.LENGTH_SHORT).show();
+		            		  //Toast.makeText(AddClaim.this, ""+finalPosition, Toast.LENGTH_SHORT).show();
 		            		  startActivity(delete);
-		            		  
+		            		  finish();
 				   
 		            	  	}
 		              }	
@@ -133,7 +152,6 @@ public class AddClaim extends ListActivity {
 		            	  Intent get_detail = new Intent(AddClaim.this, GetDetails.class);
 		            	  get_detail.putExtra("claim_position", finalPosition);
 		            	  startActivity(get_detail);
-		            	  finish();
 		              }
 		              
 		              //Edit the claim we want.
@@ -160,6 +178,7 @@ public class AddClaim extends ListActivity {
 		          					claim.editStatus("Returned");
 		          					claimAdapter.notifyDataSetChanged();
 		          				}
+		          				
 		          			});
 				            	
 		          			adb.setNegativeButton("No",new OnClickListener(){
@@ -169,22 +188,20 @@ public class AddClaim extends ListActivity {
 				          		}
 		          			});
 				          	adb.show();
-				            	  }else{
-				            		  Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
-				            		  changeStatus.putExtra("popopo", finalPosition);
-				            		  startActivity(changeStatus);
-				            		  finish();
 				            	  }
-		            	  if (list.get(finalPosition).getStatus().equals("Approved")){
-		            		  Toast.makeText(AddClaim.this, "You can no longer make any changes to this claim", Toast.LENGTH_LONG).show();
-		            		  AddClaim.this.finish();
-		            	  }
+		            	  else if (list.get(finalPosition).getStatus().equals("Approved")){
+		            		  Toast.makeText(AddClaim.this, "You can no longer make any changes to this claim.", Toast.LENGTH_SHORT).show();
+		            	  	}else{
+		            	  		Intent changeStatus = new Intent(AddClaim.this, ChangeStatus.class);
+		            	  		changeStatus.putExtra("popopo", finalPosition);
+		            	  		startActivity(changeStatus);
+		            	  		finish();
+		            	  	}
 		              }
 		              if (item.getTitle().equals("Email Claim")){
 		            	  Intent email = new Intent(AddClaim.this, EmailClaimInfo.class);
 		            	  email.putExtra("emailPos", finalPosition);
 		            	  startActivity(email);
-		            	  finish();
 		              }
 				            	  
 		              return true;  
@@ -198,17 +215,6 @@ public class AddClaim extends ListActivity {
 		
 		
 	}
-	
-	/*@Override
-	
-	protected void onStart(){
-		super.onStart();
-		this.claim = loadFromFile();
-		ClaimsList cl = new ClaimsList();
-		cl.setClaimList(this.claim);
-		ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, R.layout.custom_view_claim, this.claim);
-		listView.setAdapter(claimAdapter);
-	}*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -239,45 +245,14 @@ public class AddClaim extends ListActivity {
 		finish();
 	}
 	
-/*	public void saveInFile(Claim claim) {
-		Gson gson = new Gson();
-		try {
-			FileOutputStream fos = openFileOutput(SAVEFILE,0);
-			OutputStreamWriter osw = new OutputStreamWriter(fos);
-			gson.toJson(claim, osw);
-			osw.flush();
-			fos.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	//recover those persistent data created in the save function
-	private ArrayList<Claim> loadFromFile() {
-		Gson gson = new Gson();
-		ArrayList<Claim> claim = new ArrayList<Claim>();
-		try {
-			FileInputStream fis = openFileInput(SAVEFILE);
-			//Based on http://google.gson.googlecode.com/svn/trunk/gson/dos/javadoc/com/google/gson/Gson.html
-			Type listType = new TypeToken<ArrayList<Claim>>(){}.getType();
-			InputStreamReader isr = new InputStreamReader(fis);
-			claim = gson.fromJson(isr, listType);
-			fis.close();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (claim == null){
-			claim = new ArrayList<Claim>();
-		}
-		return claim;
+/*	@Override
+	protected void onStart(){
+		super.onStart();
+		//ClaimListController.getClaimList().deSerealize();
+		Toast.makeText(this, claim.size()+"", Toast.LENGTH_SHORT).show();
+		claimAdapter = new CustomAdapterClaim(this,
+				R.layout.custom_view_claim, claim);
+		listView.setAdapter(claimAdapter);
 	}*/
+
 }

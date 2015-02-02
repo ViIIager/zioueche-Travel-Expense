@@ -22,7 +22,7 @@
        <Button
            android:id="@+id/add_claim_button"
            android:layout_width="match_parent"
-           android:layout_height="300dp"
+           android:layout_height="150dp"
            android:layout_below="@+id/Title"
            android:layout_centerHorizontal="true"
            android:onClick="goToAdd"

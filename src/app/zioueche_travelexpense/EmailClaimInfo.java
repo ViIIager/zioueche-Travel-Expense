@@ -1,5 +1,9 @@
 package app.zioueche_travelexpense;
-
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,12 +37,13 @@ public class EmailClaimInfo extends Activity {
 		Claim claim = list.get(position);
 		subjectField.setText(claim+"");
 		ArrayList<Expense> elist = claim.getExpenses();
+		message += "This Claim and its constituent expenses have been emailed to you.\n\n";
 		message += new StringBuilder()
-        .append("Claim Name     ")
+        .append("Claim Name:     ")
         .append(claim.getName()+"\n")
-        .append("Claim Start Date     ")
+        .append("Start Date:         ")
         .append(DateFormat.getDateInstance().format(claim.getSDate())+"\n")
-        .append("Claim End Date     ")
+        .append("End Date:           ")
         .append(DateFormat.getDateInstance().format(claim.getEDate())+"\n")
         .append("Number of Expenses:     "+claim.getExpenses().size())
         .append("\n").append("\n").append("\n").toString();
@@ -47,20 +52,20 @@ public class EmailClaimInfo extends Activity {
 			count += 1;
 			message += new StringBuilder()
 		           .append("Expense "+count+"\n")
-		           .append("Expense Name     ")
+		           .append("Name:     ")
 		           .append(e.getName()+"\n")
-		           .append("Expense Date     ")
+		           .append("Date:        ")
 		           .append(DateFormat.getDateInstance().format(e.getCDate())+"\n")
-		           .append("Expense Price     ")
+		           .append("Price:       ")
 		           .append(e.getPrice()+"\n")
-		           .append("Expense Currency     ")
+		           .append("Currency:     ")
 		           .append(e.getCurrency()+"\n")
 		           .append("\n")
 		           .append("\n")
 		           .toString();
 			}
 		this.subject = list.get(position).getName().toString();
-		subjectField.setText(subject+"Claim as requested");
+		subjectField.setText("Claim as requested: "+subject);
 		EditText messageField = (EditText)findViewById(R.id.editTextMessage);
 		messageField.setText(message);
 		SendButton.setOnClickListener(new OnClickListener(){

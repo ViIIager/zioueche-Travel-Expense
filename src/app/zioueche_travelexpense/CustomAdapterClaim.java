@@ -1,4 +1,10 @@
 package app.zioueche_travelexpense;
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 
@@ -23,7 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
+//taken and modified from https://devtut.wordpress.com/2011/06/09/custom-arrayadapter-for-a-listview-android/ JAN/ 13/2015
 public class CustomAdapterClaim extends ArrayAdapter<Claim> {
 
 	// declaring our ArrayList of items

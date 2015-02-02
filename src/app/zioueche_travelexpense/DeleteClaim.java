@@ -1,5 +1,9 @@
 package app.zioueche_travelexpense;
-
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -24,7 +29,9 @@ public class DeleteClaim extends Activity {
 				public void onClick(DialogInterface dialog, int which) {
 					Claim claim = list.get(finalPosition);
 					ClaimListController.getClaimList().deleteClaim(claim);
-					DeleteClaim.this.finish();
+					Intent backTOClaim = new Intent(DeleteClaim.this, AddClaim.class);
+					startActivity(backTOClaim);
+					finish();
 		}
 	});
   	

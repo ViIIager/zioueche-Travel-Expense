@@ -1,5 +1,9 @@
 package app.zioueche_travelexpense;
-
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,6 +49,7 @@ public class ExpenseDetails extends ListActivity {
 		final ArrayList<Expense> expense = new ArrayList<Expense>(expenses);
 		if (expense.size() > 1){
 			Collections.sort(expense, new CustomComparatorExpense());
+			Collections.sort(list.get(finalPosition).getExpenses(), new CustomComparatorExpense());
 		}
 		/*final ArrayAdapter<Expense> expAdap = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_1, list.get(finalPosition).getExpenses());
 	    expView.setAdapter(expAdap);*/
@@ -59,7 +64,7 @@ public class ExpenseDetails extends ListActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				int finalPosition = ExpenseDetails.position;
-				Toast.makeText(ExpenseDetails.this, "Clicked "+list.get(finalPosition), Toast.LENGTH_SHORT).show();
+				Toast.makeText(ExpenseDetails.this, "Clicked "+list.get(finalPosition).getExpenses().get(position), Toast.LENGTH_SHORT).show();
 				Intent det = new Intent(ExpenseDetails.this, DetailView.class);
           	  	det.putExtra("pos", finalPosition);
           	  	det.putExtra("epos", position);
@@ -118,11 +123,17 @@ public class ExpenseDetails extends ListActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.add_exp) {
-		//  final int finalPosition = getIntent().getIntExtra("claimpos",0);
-      	  Intent from_within = new Intent(ExpenseDetails.this, ExpenseAdd.class);
-      	  from_within.putExtra("somename", this.position);
-      	  startActivity(from_within);
-      	  finish();
+			Collection<Claim> ccol = ClaimListController.getClaimList().getClaim();
+			ArrayList<Claim> clist = new ArrayList<Claim>(ccol);
+			int pos = getIntent().getIntExtra("claimpos",0);
+			if(clist.get(pos).getStatus().equals("Submitted")||clist.get(pos).getStatus().equals("Approved")){
+				Toast.makeText(this, "Cannot edit submitted or Approved Claims", Toast.LENGTH_SHORT).show();
+			}else{
+	      	  Intent from_within = new Intent(ExpenseDetails.this, ExpenseAdd.class);
+	      	  from_within.putExtra("somename", this.position);
+	      	  startActivity(from_within);
+	      	  finish();
+			}
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -26,9 +26,9 @@ public final class R {
     }
     public static final class id {
         public static final int AbsoluteLayout1=0x7f080004;
-        public static final int AddExpense=0x7f080048;
+        public static final int AddExpense=0x7f080049;
         public static final int CancelAction=0x7f080044;
-        public static final int DeleteItem=0x7f08004b;
+        public static final int DeleteItem=0x7f08004d;
         public static final int RelativeLayout1=0x7f080003;
         public static final int SendButton=0x7f08002b;
         public static final int Title=0x7f080000;
@@ -55,8 +55,8 @@ public final class R {
         public static final int edate_picker=0x7f08000e;
         public static final int editText1=0x7f080040;
         public static final int editTextMessage=0x7f08002a;
-        public static final int edit_claim=0x7f08004a;
-        public static final int email_claim=0x7f08004d;
+        public static final int edit_claim=0x7f080048;
+        public static final int email_claim=0x7f08004b;
         public static final int eur=0x7f08003e;
         public static final int eur_tot=0x7f080019;
         public static final int exp_picker=0x7f08002f;
@@ -64,7 +64,7 @@ public final class R {
         public static final int expense_add_button=0x7f08002c;
         public static final int gbp=0x7f08003f;
         public static final int gbp_tot=0x7f08001a;
-        public static final int get_detail=0x7f080049;
+        public static final int get_detail=0x7f08004a;
         public static final int get_sdate=0x7f08000c;
         public static final int inprogress=0x7f080008;
         public static final int linearLayout1=0x7f080024;

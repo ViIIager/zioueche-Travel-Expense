@@ -1,5 +1,9 @@
 package app.zioueche_travelexpense;
-
+/*Copyright [2015] [Omar Zioueche]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0*/
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -41,8 +45,9 @@ public class ExpenseAdd extends Activity{
 		ArrayList<Expense>elist = list.get(finalPosition).getExpenses();
 		elist.add(new Expense(name, date, currency,price));
 		Toast.makeText(ExpenseAdd.this, currency, Toast.LENGTH_SHORT).show();
-		Intent back = new Intent(this, MainActivity.class);
+		Intent back = new Intent(this, AddClaim.class);
 		startActivity(back);
+		finish();
 		//Toast.makeText(this, name+date+price+currency , Toast.LENGTH_LONG).show();
 	}
 	
@@ -88,8 +93,8 @@ public class ExpenseAdd extends Activity{
 	
 	public void getEPrice(View v){
 		EditText expname = (EditText) findViewById(R.id.price_field);
-		float price = Float.parseFloat( expname.getText().toString() );
 		if (!TextUtils.isEmpty(expname.getText().toString())){
+		float price = Float.parseFloat( expname.getText().toString() );
 			this.price = price;
 		getECurrency(v);
 		}else{
