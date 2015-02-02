@@ -37,6 +37,10 @@ import android.text.InputFilter.LengthFilter;
 import android.util.Log;
 import android.widget.Toast;
 
+/* I have added the code for persistence, but for some reason I keep getting a null pointer exception.  I cannot figure out what it is
+ * but I a starting to think it is the file not being initialized.  all other features work though. see commented out code
+ * for saveInFile and LoadFromFile in this class and the commented out ON CREATE method in the ADDCLAIM class.
+ */
 public class ClaimsList implements Serializable{
 	Context ctx;
 	
