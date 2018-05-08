@@ -11,5 +11,3 @@ Add/delete expenses
 
 email claim with all its expenses
 change status of a claim so that no one can edit it any more.
-
-SUBMISSION VIDEO:  https://www.youtube.com/watch?v=f2TItbd_JlE
